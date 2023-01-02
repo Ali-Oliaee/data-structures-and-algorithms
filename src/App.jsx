@@ -1,7 +1,7 @@
-import { BST } from "./pages"
+import router from "./router"
 
 function App() {
-  return <BST />
+  return <h3>clkdfnc</h3>
 }
 
 export default App
