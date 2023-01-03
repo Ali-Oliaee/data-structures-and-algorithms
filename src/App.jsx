@@ -1,7 +1,8 @@
+import { RouterProvider } from "react-router-dom"
 import router from "./router"
 
 function App() {
-  return <h3>clkdfnc</h3>
+  return <RouterProvider router={router} />
 }
 
 export default App
