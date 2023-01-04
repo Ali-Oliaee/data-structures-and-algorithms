@@ -4,4 +4,15 @@
     padding: 0 1rem;
     padding: 1rem;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .github-link  {
+        color: #000;
+        svg{         
+            width: 20px;
+            height: 20px;  
+        }
+    }
 }
