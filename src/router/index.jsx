@@ -1,10 +1,14 @@
 import { createBrowserRouter } from "react-router-dom"
-import { BST, HomePage } from "../pages"
+import { BST, HomePage, ArrayPage } from "../pages"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
+  },
+  {
+    path: "/array",
+    element: <ArrayPage />,
   },
   {
     path: "/bst",
