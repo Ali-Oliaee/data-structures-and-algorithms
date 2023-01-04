@@ -1,10 +1,12 @@
 import { useState } from "react"
-import { Button } from "antd"
-import "./styles.scss"
+import { Button, Collapse } from "antd"
 import ArraySidebar from "./sidebar"
 import MainLayout from "../../layout"
+import "./styles.scss"
+import Codes from "./codes"
 
 const ArrayPage = () => {
+  const { Panel } = Collapse
   const [arr, setArr] = useState([1, 2, 3, 4, 5])
   const [index, setIndex] = useState(null)
   const [value, setValue] = useState(null)
@@ -37,20 +39,29 @@ const ArrayPage = () => {
   return (
     <MainLayout sidebar={<ArraySidebar />}>
       <div className="array-page">
-        <h1>Array</h1>
-        {arr.map((item, index) => (
-          <div className="item" key={index}>
-            <span className="value">{item}</span>
-            <span className="index">{index}</span>
-          </div>
-        ))}
-        <h2 className="length">Array Length: {arr.length}</h2>
-        An array is a collection of elements of the same type placed in
-        contiguous memory locations that can be individually referenced by using
-        an index to a unique identifier. Five values of type int can be declared
-        as an array without having to declare five different variables (each
-        with its own identifier).
-        <Button type="primary" onClick={createRandomArray}>
+        <h1 className="title">Array</h1>
+        <div className="array-container">
+          {arr.map((item, index) => (
+            <div className="item" key={index}>
+              <span className="value">{item}</span>
+              <span className="index">{index}</span>
+            </div>
+          ))}
+        </div>
+        <div className="description-container">
+          <h4 className="length">Array Length: {arr.length}</h4>
+          An array is a collection of elements of the same type placed in
+          contiguous memory locations that can be individually referenced by
+          using an index to a unique identifier. Five values of type int can be
+          declared as an array without having to declare five different
+          variables (each with its own identifier).
+        </div>
+        <Collapse className="codes-container">
+          <Panel header="Codes">
+            <Codes />
+          </Panel>
+        </Collapse>
+        {/* <Button type="primary" onClick={createRandomArray}>
           Create Random Array
         </Button>
         <input
@@ -105,7 +116,7 @@ const ArrayPage = () => {
           onClick={() => setArr([...arr.sort((a, b) => a - b)])}
         >
           sort
-        </Button>
+        </Button> */}
       </div>
     </MainLayout>
   )
