@@ -3,15 +3,15 @@ import { BST, HomePage, ArrayPage } from "../pages"
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/data-structures-qiet/",
     element: <HomePage />,
   },
   {
-    path: "/array",
+    path: "/data-structures-qiet/array",
     element: <ArrayPage />,
   },
   {
-    path: "/bst",
+    path: "/data-structures-qiet/bst",
     element: <BST />,
   },
 ])
