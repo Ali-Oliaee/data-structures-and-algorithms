@@ -1,17 +1,21 @@
 {
   "name": "ds-qiet",
   "private": true,
+  "homepage": "https://ali-oliaee.github.io/data-structures-qiet/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "antd": "^5.1.2",
     "d3": "^7.8.0",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.1",
