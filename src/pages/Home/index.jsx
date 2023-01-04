@@ -4,8 +4,8 @@ const HomePage = () => {
   return (
     <div>
       <h1>Home Page</h1>
-      <Link to="/array">Array</Link>
-      <Link to="/bst">BST</Link>
+      <Link to="/data-structures-qiet/array">Array</Link>
+      <Link to="/data-structures-qiet/bst">BST</Link>
     </div>
   )
 }
