@@ -58,7 +58,7 @@ const ExpressionConvertorPage = () => {
       if (symbols.includes(x[i])) operands.push(x[i])
       else numbers.push(x[i])
     }
-    var final = operands.join(" ") + " " + numbers.join(" ")
+    var final = operands.join(" ") + " " + numbers.join("")
     setPreResult(final)
   }
 
@@ -77,9 +77,9 @@ const ExpressionConvertorPage = () => {
         can say that "Operands follows the Operator". The general structure of
         Prefix expression is as follows...
       </p>
-      <Image width={200} src={infixImage} />
-      <Image width={200} src={postfixImage} />
-      <Image width={200} src={prefixImage} />
+      <Image preview={false} width={200} src={infixImage} />
+      <Image preview={false} width={200} src={postfixImage} />
+      <Image preview={false} width={200} src={prefixImage} />
       <Input
         placeholder="Enter your expression"
         onChange={(e) => {
