@@ -114,9 +114,6 @@
     display: inline-block;
     padding:4px 6px;
     margin: 12px;
-    &:hover{
-        //border:1px solid $cBlue;
-    }
     
     }
     .controls{
@@ -138,7 +135,6 @@
         border-radius:24px;
         text-align:center;
         padding:8px 10px;
-        //border: 1px solid $cGrey;
         background-color: $cBackground;
         &:hover{
         background-color: $cBlue;
@@ -148,16 +144,14 @@
     }
     }
     #PrefixWrapper{
-    //display:table;
-    //text-align:left;
     margin: 0 0 20px 12px;
     
     &.invisible{
         display:none;
     }
     }
-    #Prefix, .time{
-    color:$cWhite;
+    #Prefix{
+    color:#000;
     border: 1px solid $cGrey;
     padding:16px;
     border-radius: 24px;
@@ -179,32 +173,9 @@
         bottom: 60px;
     }
 
-    /* Stats styles */
     .blueprint{
     background-color:$bar-prim-colorb;
     background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px
-    }
-    .meter{
-    position: fixed;
-    bottom:4px;
-    right:4px;
-    background-color:#17181a;
-    padding:8px;
-    .memory{
-        margin-bottom:4px;
-        color:$cWhite;
-        font-size:11px;
-    }
-    }
-    .graph{
-    margin: auto;
-    width: 80px;
-    min-width: 80px;
-    height: $graph-height;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    @extend .blueprint;
     }
     .max{
     width: 100%;
@@ -226,7 +197,7 @@
     .val{
         width: 100%;
         background: $bar-prim-color;
-    }
+        }
     
     }
 
