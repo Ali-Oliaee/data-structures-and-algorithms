@@ -1,5 +1,12 @@
 import { createBrowserRouter } from "react-router-dom"
-import { BST, HomePage, ArrayPage, StackPage } from "../pages"
+import {
+  BST,
+  HomePage,
+  ArrayPage,
+  StackPage,
+  EXTPage,
+  ExpressionConvertorPage,
+} from "../pages"
 
 const router = createBrowserRouter([
   {
@@ -17,6 +24,14 @@ const router = createBrowserRouter([
   {
     path: "/data-structures-qiet/stack",
     element: <StackPage />,
+  },
+  {
+    path: "/data-structures-qiet/ext",
+    element: <EXTPage />,
+  },
+  {
+    path: "/data-structures-qiet/expressions",
+    element: <ExpressionConvertorPage />,
   },
 ])
 
