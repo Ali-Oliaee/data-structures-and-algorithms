@@ -1,15 +1,15 @@
 import { useState } from "react"
-import { Collapse, Button, Input } from "antd"
+import { Button, Input } from "antd"
 import MainLayout from "../../layout"
-import Codes from "./codes"
+import { CodeWrapper } from "../../components"
+import codes from "../../utils/code/array"
 import "./styles.scss"
 
 const ArrayPage = () => {
-  const { Panel } = Collapse
   const [arr, setArr] = useState([1, 2, 3, 4, 5])
   const [index, setIndex] = useState(null)
   const [value, setValue] = useState(null)
-  const [length, setLength] = useState(10)
+
   const createRandomArray = () => {
     setArr([])
     for (let i = 0; i < 10; i++) {
@@ -55,11 +55,7 @@ const ArrayPage = () => {
           variables (each with its own identifier).
         </div>
         <div className="info">
-          <Collapse className="codes-container">
-            <Panel header="Codes">
-              <Codes />
-            </Panel>
-          </Collapse>
+          <CodeWrapper data={codes} />
           <div className="options">
             <div className="option">
               <Button
