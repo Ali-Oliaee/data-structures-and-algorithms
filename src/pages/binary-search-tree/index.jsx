@@ -1,6 +1,6 @@
 import { BinarySearchTree, useBinarySearchTree } from "react-tree-vis"
 import { Button, Collapse } from "antd"
-import MainLayout from "../../layout"
+import MainLayout from "@layouts"
 import Codes from "./codes"
 import "./styles.scss"
 

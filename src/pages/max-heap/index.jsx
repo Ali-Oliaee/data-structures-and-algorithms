@@ -1,6 +1,6 @@
-import { BinarySearchTree, MaxHeap, MinHeap, useHeap } from "react-tree-vis"
+import { MaxHeap, useHeap } from "react-tree-vis"
 import { Button, Collapse } from "antd"
-import MainLayout from "../../layout"
+import MainLayout from "@layouts"
 import Codes from "./codes"
 import "./styles.scss"
 
