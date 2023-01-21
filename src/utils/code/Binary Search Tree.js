@@ -142,7 +142,7 @@ export default [
     ],
   },
   {
-    title: "minimum Value Of BST",
+    title: "minimum Value",
     codes: [
       {
         subtitle: "minimum Value Of BST",
@@ -290,7 +290,7 @@ export default [
     ],
   },
   {
-    title: "Maximum Depth Of BST",
+    title: "Maximum Depth",
     codes: [
       {
 	    subtitle: "Maximum Depth Of BST",
@@ -313,6 +313,5 @@ export default [
 		}`,
 	  },
     ],
-  },
-			
+  },			
 ]
