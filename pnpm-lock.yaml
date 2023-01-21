@@ -13,6 +13,8 @@ specifiers:
   react-syntax-highlighter: ^15.5.0
   react-tree-vis: ^1.0.0
   sass: ^1.57.1
+  tsparticles-engine: ^2.8.0
+  tsparticles-preset-firefly: ^2.8.0
   vite: ^4.0.0
 
 dependencies:
@@ -25,6 +27,8 @@ dependencies:
   react-syntax-highlighter: 15.5.0_react@18.2.0
   react-tree-vis: 1.0.0_biqbaboplfbrettd7655fr4n2y
   sass: 1.57.1
+  tsparticles-engine: 2.8.0
+  tsparticles-preset-firefly: 2.8.0
 
 devDependencies:
   '@types/react': 18.0.26
@@ -2117,6 +2121,66 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       escape-string-regexp: 1.0.5
+    dev: false
+
+  /tsparticles-engine/2.8.0:
+    resolution: {integrity: sha512-r0cWKxefQkQCzU+RRG/82VQnl/fAkws27EuYIOKcnHiYsWnZYcX8iPiQs/qgDajP0haBSn4Vui8UbTCAwSFniw==}
+    requiresBuild: true
+    dev: false
+
+  /tsparticles-interaction-external-trail/2.8.0:
+    resolution: {integrity: sha512-fmRdju4Wk8r2Xkye47vqHCl220cEHVvsM/ao99+XV+22XilETnnjRcE+s0bTspHTmmWCjtfejYW0qMNgPnYIdA==}
+    dependencies:
+      tsparticles-engine: 2.8.0
+    dev: false
+
+  /tsparticles-move-base/2.8.0:
+    resolution: {integrity: sha512-+LA6sJ429gvPsto6iX8Xf2WK13FDcdAgjU5jKmSXqFouAdFfiClj+QM0jjnAS4LT5UYjter6twrjwFawXctj0w==}
+    dependencies:
+      tsparticles-engine: 2.8.0
+    dev: false
+
+  /tsparticles-preset-firefly/2.8.0:
+    resolution: {integrity: sha512-iw0ssE7vJkfK1aES5JNoqjvmIlzRIuAakxzyvN5V6LHROzH8iYzDntAo41h6tYVoA4GGz0oIwj3/UEPMt4SRuQ==}
+    dependencies:
+      tsparticles-engine: 2.8.0
+      tsparticles-interaction-external-trail: 2.8.0
+      tsparticles-move-base: 2.8.0
+      tsparticles-shape-circle: 2.8.0
+      tsparticles-updater-color: 2.8.0
+      tsparticles-updater-life: 2.8.0
+      tsparticles-updater-opacity: 2.8.0
+      tsparticles-updater-size: 2.8.0
+    dev: false
+
+  /tsparticles-shape-circle/2.8.0:
+    resolution: {integrity: sha512-mjBPnTakFZliBh9BZXtvHMjDR5CVst172XtypoMEwhqncal4Mp9rVAmGd43ctekQ/O45WB/2NykaGGLBkq4h7A==}
+    dependencies:
+      tsparticles-engine: 2.8.0
+    dev: false
+
+  /tsparticles-updater-color/2.8.0:
+    resolution: {integrity: sha512-L++4ZYabHzqEQlElSZ6dGAxGJKYeAjRB1YoQVKMJVDots0b9EMpT14s0ihpte/tsYE+cmHeoE5UTPm6FmeAZ4Q==}
+    dependencies:
+      tsparticles-engine: 2.8.0
+    dev: false
+
+  /tsparticles-updater-life/2.8.0:
+    resolution: {integrity: sha512-6v/RUmp7UkxqfAgAs4Iz0O9dUVjRjUpFkIvYa8n1sFRgj58k/7jlGPraIhzFRJ/OVC1pT1ev7c4oBDM0KK0QbA==}
+    dependencies:
+      tsparticles-engine: 2.8.0
+    dev: false
+
+  /tsparticles-updater-opacity/2.8.0:
+    resolution: {integrity: sha512-L5SQ9k/sH7hzOWqAzxckfSc096kaQeYe3aFKm8WJ8RhCV71rQle381roRhq9qtWfFS//2X+tzcjRDLhhR0jOmg==}
+    dependencies:
+      tsparticles-engine: 2.8.0
+    dev: false
+
+  /tsparticles-updater-size/2.8.0:
+    resolution: {integrity: sha512-QnbRObqu3jh2TsblKqfgWlvh9Zt65yoBnGBKdE0ZM3fYF2UCUud8NEqXMd+SoYSHOi78nwRPndrssHCQNh8tqg==}
+    dependencies:
+      tsparticles-engine: 2.8.0
     dev: false
 
   /universalify/0.1.2:
