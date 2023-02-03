@@ -1,6 +1,4 @@
 import { newTrace, addToTrace, createKey } from "./helpers"
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight"
-import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 const InsertionSort = (numbers) => {
   const trace = newTrace(numbers)
@@ -31,6 +29,7 @@ export const InsertionSortKey = createKey(
   "Overwrite from memory"
 )
 export const InsertionSortDesc = {
+  title: "Insertion Sort",
   description: (
     <p>
       <a
@@ -39,7 +38,7 @@ export const InsertionSortDesc = {
         rel="noopener noreferrer"
       >
         Insertion Sort
-      </a>
+      </a>{" "}
       is a simple sorting algorithm that iterates through an array and at each
       iteration it removes one element from the array, finds the location it
       belongs to in the sorted list and inserts it there, repeating until no
@@ -61,17 +60,7 @@ export const InsertionSortDesc = {
     </span>
   ),
   bestCase: <span>O(n)</span>,
+  space: <span>O(1)</span>,
 }
-
-export const InsertionSortCode = (
-  <SyntaxHighlighter language="cpp" style={tomorrow}>{`
-void insertionSort(int arr[], int n){
-  for (int i = 1; i < n; i++){
-      int next = arr[i];
-      for (int j = i - 1; j >= 0 && arr[j] > next; j--)
-        arr[j + 1] = next;
-  }
-}`}</SyntaxHighlighter>
-)
 
 export default InsertionSort

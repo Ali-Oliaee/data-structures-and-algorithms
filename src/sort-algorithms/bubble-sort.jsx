@@ -1,6 +1,4 @@
 import { swap, newTrace, addToTrace, lastSorted, createKey } from "./helpers"
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight"
-import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 const BubbleSort = (numbers) => {
   const trace = newTrace(numbers)
@@ -22,6 +20,7 @@ const BubbleSort = (numbers) => {
 
 export const BubbleSortKey = createKey("Comparing", "Swapping")
 export const BubbleSortDescription = {
+  title: "Bubble Sort",
   description: (
     <p>
       <a
@@ -50,15 +49,7 @@ export const BubbleSortDescription = {
     </span>
   ),
   bestCase: <span>O(n)</span>,
+  space: <span>O(1)</span>,
 }
-
-export const BubbleSortCode = (
-  <SyntaxHighlighter language="cpp" style={tomorrow}>{`
-void bubbleSort(int arr[], int n){
-    for (int i = n - 1; i >= 1; i--)
-        for (int j = 1; j < n <= i; j++)
-            if (arr[j - 1] > arr[j]) swap(arr[j], arr[j - 1]);
-}`}</SyntaxHighlighter>
-)
 
 export default BubbleSort

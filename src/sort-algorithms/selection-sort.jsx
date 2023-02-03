@@ -1,6 +1,4 @@
 import { swap, newTrace, addToTrace, lastSorted, createKey } from "./helpers"
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight"
-import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 const SelectionSort = (numbers) => {
   const trace = newTrace(numbers)
@@ -17,7 +15,9 @@ const SelectionSort = (numbers) => {
     }
 
     addToTrace(trace, numbers, lastSorted(trace), [], [i, minIndex])
+
     swap(numbers, i, minIndex)
+
     addToTrace(trace, numbers, [...lastSorted(trace), i], [], [])
   }
 
@@ -28,6 +28,7 @@ const SelectionSort = (numbers) => {
 export const SelectionSortKey = createKey("Comparing", "Swapping")
 
 export const SelectionSortDesc = {
+  title: "Selection Sort",
   description: (
     <p>
       <a
@@ -36,7 +37,7 @@ export const SelectionSortDesc = {
         rel="noopener noreferrer"
       >
         Selection Sort
-      </a>
+      </a>{" "}
       is an in-place comparison sorting algorithm that divides the input list
       into two parts: the sublist of items already sorted, which is built up
       from left to right at the front (left) of the list, and the sublist of
@@ -63,19 +64,7 @@ export const SelectionSortDesc = {
       O(n<sup>2</sup>)
     </span>
   ),
+  space: <span>O(1)</span>,
 }
-
-export const SelectionSortCode = (
-  <SyntaxHighlighter language="cpp" style={tomorrow}>{`
-void selectionSort(int arr[], int n){
-  for (int i = n - 1; i >= 1; i--){
-      int min_idx = i;
-      for (j = 0; j < i; j++)
-        if (arr[j] >= arr[min_idx])
-          min_idx = j;
-      swap(arr[min_idx], arr[i]);
-  }
-}`}</SyntaxHighlighter>
-)
 
 export default SelectionSort

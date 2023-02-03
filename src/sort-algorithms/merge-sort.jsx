@@ -1,6 +1,4 @@
 import { newTrace, addToTrace, createKey } from "./helpers"
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight"
-import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 const MergeSort = (numbers) => {
   const trace = newTrace(numbers)
@@ -84,6 +82,7 @@ export const MergeSortKey = createKey(
   "Overwrite from axillary array"
 )
 export const MergeSortDesc = {
+  title: "Merge Sort",
   description: (
     <div>
       <p>
@@ -111,53 +110,23 @@ export const MergeSortDesc = {
   ),
   worstCase: (
     <span>
-      O(<em>n</em>log <em>n</em>)
+      O(<em>n</em> log <em>n</em>)
     </span>
   ),
   avgCase: (
     <span>
-      O(<em>n</em>log <em>n</em>)
+      O(<em>n</em> log <em>n</em>)
     </span>
   ),
   bestCase: (
     <span>
-      O(<em>n</em>log <em>n</em>)
+      O(<em>n</em> log <em>n</em>)
+    </span>
+  ),
+  space: (
+    <span>
+      O(<em>n</em>)
     </span>
   ),
 }
-
-export const MergeSortCode = (
-  <SyntaxHighlighter language="cpp" style={tomorrow}>{`
-void mergeSort(int arr[], int low, int high){
-  if(low < high)
-    int mid = (low + high) / 2;
-
-    mergeSort(arr, low, mid);
-    mergeSort(arr, mid + 1, high);
-
-    merge(arr, low, mid, high);
-}
-
-void merge(int arr[], int low, int mid, int high){
-  int n = high - low + 1;
-  int *b = new int[n];
-  int left = low, right = mid + 1, bIdx = 0;
-
-  while(left <= mid && right <= high){
-    if(arr[left] <= arr[right])
-      b[bIdx++] = arr[left++];
-    else
-      b[bIdx++] = arr[right++];
-  }
-
-  while(left <= mid) b[bIdx++] = arr[left++];
-  while(right <= high) b[bIdx++] = arr[right++];
-
-  for(int i = 0; i < n; i++)
-    arr[low + i] = b[i];
-
-  delete[] b;
-}`}</SyntaxHighlighter>
-)
-
 export default MergeSort
