@@ -1,22 +1,84 @@
-import "./styles.scss"
+import { useEffect, useState } from "react"
 import {
-  ProgressBar,
   SortColorKey,
   SortControls,
   SortDescription,
   SortPreview,
 } from "@/components"
-import { useState } from "react"
 import MainLayout from "@/layouts"
-import { Button, Dropdown, Row } from "antd"
+import { Button, Progress, Row, Select } from "antd"
 import sortAlgorithms from "@/utils/sort-algorithms"
-import { DownOutlined } from "@ant-design/icons"
 import arrayLength from "@/utils/array-length"
-import { Select } from "antd"
+import BubbleSort, {
+  BubbleSortKey,
+  BubbleSortDescription,
+} from "@/sort-algorithms/bubble-sort"
+import HeapSort, {
+  HeapSortKey,
+  HeapSortDesc,
+} from "@/sort-algorithms/heap-sort"
+import InsertionSort, {
+  InsertionSortKey,
+  InsertionSortDesc,
+} from "@/sort-algorithms/insertion-sort"
+import MergeSort, {
+  MergeSortKey,
+  MergeSortDesc,
+} from "@/sort-algorithms/merge-sort"
+import QuickSort, {
+  QuickSortKey,
+  QuickSortDesc,
+} from "@/sort-algorithms/quick-sort"
+import QuickSort3, {
+  QuickSort3Key,
+  QuickSort3Desc,
+} from "@/sort-algorithms/quick-sort3"
+import SelectionSort, {
+  SelectionSortKey,
+  SelectionSortDesc,
+} from "@/sort-algorithms/selection-sort"
+import ShellSort, {
+  ShellSortKey,
+  ShellSortDesc,
+} from "@/sort-algorithms/shell-sort"
+import "./styles.scss"
 import sortSpeeds from "@/utils/sort-speeds"
-import { useEffect } from "react"
+import { useRef } from "react"
 
 const SortAlgorithmsPage = () => {
+  const ALGORITHM = {
+    "Bubble Sort": BubbleSort,
+    "Selection Sort": SelectionSort,
+    "Insertion Sort": InsertionSort,
+    "Merge Sort": MergeSort,
+    "Quick Sort": QuickSort,
+    "Quick Sort 3": QuickSort3,
+    "Heap Sort": HeapSort,
+    "Shell Sort": ShellSort,
+  }
+
+  const ALGORITHM_KEY = {
+    "Bubble Sort": BubbleSortKey,
+    "Selection Sort": SelectionSortKey,
+    "Insertion Sort": InsertionSortKey,
+    "Merge Sort": MergeSortKey,
+    "Quick Sort": QuickSortKey,
+    "Quick Sort 3": QuickSort3Key,
+    "Heap Sort": HeapSortKey,
+    "Shell Sort": ShellSortKey,
+  }
+
+  const ALGORITHM_DESC = {
+    "Bubble Sort": BubbleSortDescription,
+    "Selection Sort": SelectionSortDesc,
+    "Insertion Sort": InsertionSortDesc,
+    "Merge Sort": MergeSortDesc,
+    "Quick Sort": QuickSortDesc,
+    "Quick Sort 3": QuickSort3Desc,
+    "Heap Sort": HeapSortDesc,
+    "Shell Sort": ShellSortDesc,
+  }
+
   const [trace, setTrace] = useState([])
   const [traceStep, setTraceStep] = useState(-1)
   const [originalArray, setOriginalArray] = useState([])
@@ -28,19 +90,26 @@ const SortAlgorithmsPage = () => {
   const [sortedIndices, setSortedIndices] = useState([])
   const [timeoutIds, setTimeoutIds] = useState([])
   const [playbackSpeed, setPlaybackSpeed] = useState(1)
-  const [algorithm, setAlgorithm] = useState("")
-  const [sortSpeed, setSortSpeed] = useState("")
-  const [arraySize, setArraySize] = useState(0)
+  const [algorithm, setAlgorithm] = useState("Bubble Sort")
+  const [arraySize, setArraySize] = useState(10)
+  const prevArray = useRef("")
+  const prevTrace = useRef("")
 
-  // const componentDidUpdate = (prevProps) => {
-  //   if (prevProps.array !== array) {
-  //     reset(array)
-  //   }
-  //   if (prevProps.trace !== trace) {
-  //     this.clearTimeouts()
-  //     setTrace(trace)
-  //   }
-  // }
+  useEffect(() => {
+    prevArray.current = array
+  }, [array])
+
+  useEffect(() => {
+    prevTrace.current = trace
+  }, [trace])
+
+  useEffect(() => {
+    if (prevArray.current !== array) reset(array)
+    if (prevTrace.current !== trace) {
+      clearTimeouts()
+      setTrace(trace)
+    }
+  }, [array, trace, arraySize])
 
   const reset = (array) => {
     setTrace([])
@@ -68,6 +137,15 @@ const SortAlgorithmsPage = () => {
     setSortedIndices(visualState.sortedIndices)
   }
 
+  const createTrace = () => {
+    const numbers = [...array]
+    const sort = ALGORITHM[algorithm]
+    if (sort) {
+      const trace = sort(numbers)
+      setTrace(trace)
+    }
+  }
+
   const run = (trace) => {
     const timeoutIds = []
     const timer = 250 / playbackSpeed
@@ -81,13 +159,12 @@ const SortAlgorithmsPage = () => {
         i * timer,
         item
       )
-
       timeoutIds.push(timeoutId)
     })
 
-    // let timeoutId = setTimeout(clearTimeouts, trace.length * timer)
-    // timeoutIds.push(timeoutId)
-    // setTimeoutIds(timeoutIds)
+    let timeoutId = setTimeout(clearTimeouts, trace.length * timer)
+    timeoutIds.push(timeoutId)
+    setTimeoutIds(timeoutIds)
   }
 
   const generateRandomArray = () => {
@@ -98,75 +175,73 @@ const SortAlgorithmsPage = () => {
 
     setArray(array)
     setTrace([])
+    createTrace()
   }
 
   const pause = () => clearTimeouts()
 
   useEffect(() => {
     generateRandomArray()
-  }, [arraySize])
+  }, [])
 
-  // const continueSort = () => {
-  //   const trace = this.state.trace.slice(this.state.traceStep)
-  //   this.run(trace)
-  // }
+  const continueSort = () => {
+    const trace = trace.slice(traceStep)
+    run(trace)
+  }
 
-  // const stepForward = () => {
-  //   const trace = this.state.trace
-  //   const step = this.state.traceStep
-  //   if (step < trace.length - 1) {
-  //     const item = trace[step + 1]
-  //     this.setState({ traceStep: step + 1 }, this._changeVisualState(item))
-  //   }
-  // }
+  const stepForward = () => {
+    if (traceStep < trace.length - 1) {
+      const item = trace[traceStep + 1]
+      setTraceStep(traceStep + 1)
+      changeVisualState(item)
+    }
+  }
 
-  // const stepBackward = () => {
-  //   const trace = trace
-  //   const step = traceStep
-  //   if (step > 0) {
-  //     const item = trace[step - 1]
-  //     this.setState({ traceStep: step - 1 }, changeVisualState(item))
-  //   }
-  // }
+  const stepBackward = () => {
+    if (traceStep > 0) {
+      const item = trace[traceStep - 1]
+      setTraceStep(traceStep - 1)
+      changeVisualState(item)
+    }
+  }
 
-  // const repeat = () => {
-  //   this.clearTimeouts()
-  //   this.setState((prevState) => ({
-  //     array: [...prevState.originalArray],
-  //     traceStep: -1,
-  //     comparing: [],
-  //     compared: [],
-  //     sorted: [],
-  //   }))
-  //   this.run(this.state.trace)
-  // }
-
-  // const adjustPlaybackSpeed = (speed) => {
-  //   const playing = this.state.timeoutIds.length > 0
-  //   this.pause()
-  //   const playbackSpeed = Number(speed.split("x")[0])
-  //   this.setState({ playbackSpeed }, () => {
-  //     if (playing) this.continueSort()
-  //   })
-  // }
+  const adjustPlaybackSpeed = (speed) => {
+    const playing = timeoutIds.length > 0
+    pause()
+    const playbackSpeed = Number(speed.split("x")[0])
+    setPlaybackSpeed(playbackSpeed)
+    playing && continueSort()
+  }
 
   return (
-    <MainLayout hasOptions>
+    <MainLayout>
       <Row justify="end">
         <Select
           options={sortAlgorithms}
-          placeholder="Sort Algorithm"
+          value={algorithm}
           onChange={setAlgorithm}
           bordered={false}
         />
         <Select
           options={arrayLength}
-          placeholder="Array Size"
-          onChange={setArraySize}
+          value={arraySize}
+          onChange={(value) => {
+            setArraySize(value)
+            generateRandomArray()
+          }}
           bordered={false}
         />
-        <Button type="text">Randomize</Button>
+        <Select
+          value={playbackSpeed + "x"}
+          options={sortSpeeds}
+          onChange={adjustPlaybackSpeed}
+          bordered={false}
+        />
+        <Button type="text" onClick={generateRandomArray}>
+          Randomize
+        </Button>
       </Row>
+
       <SortPreview
         numbers={array}
         maxNum={Math.max(...array)}
@@ -177,34 +252,33 @@ const SortAlgorithmsPage = () => {
         sortedIndices={sortedIndices}
       />
 
-      <div className="SortVisualizer__ProgressBar">
-        <ProgressBar
-          width={trace.length > 0 ? (traceStep / (trace.length - 1)) * 100 : 0}
-        />
-      </div>
+      <Progress
+        percent={trace.length > 0 ? (traceStep / (trace.length - 1)) * 100 : 0}
+        showInfo={false}
+      />
 
       <SortControls
-        onPlay={traceStep === -1 ? run(trace) : continueSort()}
+        // onPlay={() => {
+        //   traceStep === -1 ? run(trace) : continueSort()
+        // }}
+        onPlay={() => run(trace)}
         onPause={pause}
-        // onForward={this.stepForward.bind(this)}
-        // onBackward={this.stepBackward.bind(this)}
-        // onRepeat={this.repeat.bind(this)}
-        onAdjustSpeed={setSortSpeed}
+        onForward={stepForward}
+        onBackward={stepBackward}
+        onAdjustSpeed={adjustPlaybackSpeed}
         playing={timeoutIds.length > 0}
         // playDisabled={
-        //   (this.state.traceStep >= this.state.trace.length - 1 &&
-        //     this.state.traceStep !== -1) ||
-        //   this.state.trace.length <= 0
+        //   (traceStep >= trace.length - 1 && traceStep !== -1) ||
+        //   trace.length <= 0
         // }
         // forwardDisabled={this.state.traceStep >= this.state.trace.length - 1}
         // backwardDisabled={this.state.traceStep <= 0}
-        // repeatDisabled={this.state.traceStep <= 0}
-        playbackSpeed={sortSpeed}
+        playbackSpeed={playbackSpeed}
       />
 
-      <SortColorKey />
+      <SortColorKey {...ALGORITHM_KEY[algorithm]} />
 
-      <SortDescription />
+      <SortDescription {...ALGORITHM_DESC[algorithm]} />
     </MainLayout>
   )
 }
