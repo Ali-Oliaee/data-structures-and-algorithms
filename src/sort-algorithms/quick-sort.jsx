@@ -6,6 +6,8 @@ import {
   createRange,
   createKey,
 } from "./helpers"
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight"
+import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 const QuickSort = (numbers) => {
   const trace = newTrace(numbers)
@@ -108,7 +110,6 @@ export const QuickSortKey = createKey(
 )
 
 export const QuickSortDesc = {
-  title: "Quick Sort",
   description: (
     <div>
       <p>
@@ -118,7 +119,7 @@ export const QuickSortDesc = {
           rel="noopener noreferrer"
         >
           Quick Sort
-        </a>{" "}
+        </a>
         is an efficient, in-place sorting algorith that in practice is faster
         than MergeSort and HeapSort. However, it is not a stable sorting
         algorithm, meaning that the relative positioning of equal sort items is
@@ -168,11 +169,24 @@ export const QuickSortDesc = {
       O(<em>n</em>log<em>n</em>)
     </span>
   ),
-  space: (
-    <span>
-      O(log<em>n</em>)
-    </span>
-  ),
 }
+
+export const QuickSortCode = (
+  <SyntaxHighlighter language="cpp" style={tomorrow}>{`
+  void quickSort(int * arr, int n){
+      int arr[6], i, elem;
+      cout<<"Enter 5 Array Elements: ";
+      for(i=0; i<5; i++)
+          cin>>arr[i];
+      cout<<"Enter Element to Insert: ";
+      cin>>elem;
+      arr[i] = elem;
+      cout<<"The New Array is:";
+      for(i=0; i<6; i++)
+          cout<<arr[i]<<"  ";
+      cout<<endl;
+      return 0;
+  }`}</SyntaxHighlighter>
+)
 
 export default QuickSort

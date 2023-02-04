@@ -1,6 +1,6 @@
 .sort-description {
   text-align: left;
-  width: 80%;
+  width: 90%;
   max-width: 1200px;
   padding: 1rem;
   margin: 0 auto;
@@ -11,31 +11,28 @@
   }
 
   .SortInfo__Article {
-    width: 50ch;
-    line-height: 1.3;
+    margin-top: 20px;
+    line-height: 24px;
   }
 
-  .SortInfo__Article li {
-    line-height: 1.5;
+  li {
+    line-height: 1.2;
   }
 
   .SortInfo__Article a {
-    color: #f48fb1;
+    margin-inline-end: 4px;
   }
 
-  .SortInfo__Article a:hover {
-    color: #bf5f82;
-  }
-
-  .SortInfo__Aside td {
-    padding: 0.5rem 0;
+  td {
+    padding: 0.2rem 0;
+    min-width: 160px;
   }
 
   .SortInfo__Aside h3 {
     margin: 1rem 0;
   }
 
-  .SortInfo__Aside code {
+  code {
     padding-left: 1rem;
     font-weight: 700;
   }
@@ -54,6 +51,7 @@
 
     .SortInfo__Aside {
       padding-left: 5ch;
+      margin-top: 10px;
       border-left: 1px solid rgb(209, 209, 214);
     }
   }

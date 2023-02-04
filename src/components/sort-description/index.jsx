@@ -1,17 +1,15 @@
 import "./styles.scss"
 
 const SortDescription = ({
-  title,
   description,
   worstCase,
   avgCase,
   bestCase,
-  space,
+  code,
 }) => {
   return (
     <div className="sort-description">
       <hr />
-      <h1>{title ?? "Select Algorithm"}</h1>
       <div className="SortInfo__Body">
         <article className="SortInfo__Article">
           {description ?? (
@@ -20,13 +18,11 @@ const SortDescription = ({
               execution on an array of numbers.
             </p>
           )}
-        </article>
-        <aside className="SortInfo__Aside">
           <h3>Performance</h3>
           <table>
             <tbody>
               <tr>
-                <td>Worst-case time complexity</td>
+                <td>Worst time complexity</td>
                 <td>
                   <code>{worstCase}</code>
                 </td>
@@ -38,19 +34,17 @@ const SortDescription = ({
                 </td>
               </tr>
               <tr>
-                <td>Best-case time complexity</td>
+                <td>Best time complexity</td>
                 <td>
                   <code>{bestCase}</code>
                 </td>
               </tr>
-              <tr>
-                <td>Worst-case space complexity</td>
-                <td>
-                  <code>{space}</code>
-                </td>
-              </tr>
             </tbody>
           </table>
+        </article>
+        <aside className="SortInfo__Aside">
+          <h3>Code</h3>
+          {code}
         </aside>
       </div>
     </div>

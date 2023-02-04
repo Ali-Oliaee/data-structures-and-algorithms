@@ -6,6 +6,8 @@ import {
   createRange,
   createKey,
 } from "./helpers"
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight"
+import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 const QuickSort3 = (numbers) => {
   const trace = newTrace(numbers)
@@ -138,7 +140,6 @@ export const QuickSort3Key = createKey(
 )
 
 export const QuickSort3Desc = {
-  title: "Quick Sort 3-Way Partitioning",
   description: (
     <div>
       <p>
@@ -147,8 +148,8 @@ export const QuickSort3Desc = {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Quick Sort
-        </a>{" "}
+          Quick Sort 3-Way Partitioning
+        </a>
         exhibits poor performance on arrays that contain many repeated elements.
         This issue (
         <a
@@ -174,7 +175,7 @@ export const QuickSort3Desc = {
   ),
   avgCase: (
     <span>
-      O(<em>n</em> log <em>n</em>)
+      O(<em>n</em>log <em>n</em>)
     </span>
   ),
   bestCase: (
@@ -182,11 +183,24 @@ export const QuickSort3Desc = {
       O(<em>n</em>)
     </span>
   ),
-  space: (
-    <span>
-      O(log <em>n</em>)
-    </span>
-  ),
 }
+
+export const QuickSort3Code = (
+  <SyntaxHighlighter language="cpp" style={tomorrow}>{`
+  void QuickSortT(int * arr, int n){
+      int arr[6], i, elem;
+      cout<<"Enter 5 Array Elements: ";
+      for(i=0; i<5; i++)
+          cin>>arr[i];
+      cout<<"Enter Element to Insert: ";
+      cin>>elem;
+      arr[i] = elem;
+      cout<<"The New Array is:";
+      for(i=0; i<6; i++)
+          cout<<arr[i]<<"  ";
+      cout<<endl;
+      return 0;
+  }`}</SyntaxHighlighter>
+)
 
 export default QuickSort3

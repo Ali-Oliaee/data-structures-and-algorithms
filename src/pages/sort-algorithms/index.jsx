@@ -7,36 +7,43 @@ import arrayLength from "@/utils/array-length"
 import BubbleSort, {
   BubbleSortKey,
   BubbleSortDescription,
+  BubbleSortCode,
 } from "@/sort-algorithms/bubble-sort"
 import HeapSort, {
   HeapSortKey,
   HeapSortDesc,
+  HeapSortCode,
 } from "@/sort-algorithms/heap-sort"
 import InsertionSort, {
   InsertionSortKey,
   InsertionSortDesc,
+  InsertionSortCode,
 } from "@/sort-algorithms/insertion-sort"
 import MergeSort, {
   MergeSortKey,
   MergeSortDesc,
+  MergeSortCode,
 } from "@/sort-algorithms/merge-sort"
 import QuickSort, {
   QuickSortKey,
   QuickSortDesc,
+  QuickSortCode,
 } from "@/sort-algorithms/quick-sort"
 import QuickSort3, {
   QuickSort3Key,
   QuickSort3Desc,
+  QuickSort3Code,
 } from "@/sort-algorithms/quick-sort3"
 import SelectionSort, {
   SelectionSortKey,
   SelectionSortDesc,
+  SelectionSortCode,
 } from "@/sort-algorithms/selection-sort"
 import ShellSort, {
   ShellSortKey,
   ShellSortDesc,
+  ShellSortCode,
 } from "@/sort-algorithms/shell-sort"
-import "./styles.scss"
 import sortSpeeds from "@/utils/sort-speeds"
 import { useRef } from "react"
 import {
@@ -45,6 +52,7 @@ import {
   StepBackwardOutlined,
   StepForwardOutlined,
 } from "@ant-design/icons"
+import "./styles.scss"
 
 const SortAlgorithmsPage = () => {
   const ALGORITHM = {
@@ -80,6 +88,17 @@ const SortAlgorithmsPage = () => {
     "Shell Sort": ShellSortDesc,
   }
 
+  const ALGORITHM_CODE = {
+    "Bubble Sort": BubbleSortCode,
+    "Selection Sort": SelectionSortCode,
+    "Insertion Sort": InsertionSortCode,
+    "Merge Sort": MergeSortCode,
+    "Quick Sort": QuickSortCode,
+    "Quick Sort 3": QuickSort3Code,
+    "Heap Sort": HeapSortCode,
+    "Shell Sort": ShellSortCode,
+  }
+
   const [trace, setTrace] = useState([])
   const [traceStep, setTraceStep] = useState(-1)
   const [originalArray, setOriginalArray] = useState([])
@@ -91,10 +110,11 @@ const SortAlgorithmsPage = () => {
   const [sortedIndices, setSortedIndices] = useState([])
   const [timeoutIds, setTimeoutIds] = useState([])
   const [playbackSpeed, setPlaybackSpeed] = useState(1)
-  const [algorithm, setAlgorithm] = useState("Bubble Sort")
+  const [algorithm, setAlgorithm] = useState("")
   const [arraySize, setArraySize] = useState(10)
   const prevArray = useRef("")
   const prevTrace = useRef("")
+  const prevTraceStep = useRef("")
 
   useEffect(() => {
     prevArray.current = array
@@ -105,6 +125,10 @@ const SortAlgorithmsPage = () => {
   }, [trace])
 
   useEffect(() => {
+    prevTraceStep.current = traceStep
+  }, [traceStep])
+
+  useEffect(() => {
     if (prevArray.current !== array) reset(array)
     if (prevTrace.current !== trace) {
       clearTimeouts()
@@ -113,6 +137,7 @@ const SortAlgorithmsPage = () => {
   }, [array, trace, arraySize])
 
   const reset = (array) => {
+    setArray(array)
     setTrace([])
     setTraceStep(-1)
     setGroupA([])
@@ -121,7 +146,6 @@ const SortAlgorithmsPage = () => {
     setGroupD([])
     setSortedIndices([])
     setOriginalArray([...array])
-    setArray(array)
   }
 
   const clearTimeouts = () => {
@@ -154,13 +178,12 @@ const SortAlgorithmsPage = () => {
     trace.forEach((item, i) => {
       let timeoutId = setTimeout(
         (item) => {
-          setTraceStep(traceStep + 1)
+          setTraceStep(prevTraceStep.current + 1)
           changeVisualState(item)
         },
         i * timer,
         item
       )
-      setTraceStep(traceStep + 1)
       timeoutIds.push(timeoutId)
     })
 
@@ -220,8 +243,11 @@ const SortAlgorithmsPage = () => {
       <Row justify="end">
         <Select
           options={sortAlgorithms}
-          value={algorithm}
-          onChange={setAlgorithm}
+          placeholder="Sort Algorithm"
+          onChange={(value) => {
+            setAlgorithm(value)
+            generateRandomArray()
+          }}
           bordered={false}
         />
         <Select
@@ -259,52 +285,33 @@ const SortAlgorithmsPage = () => {
         showInfo={false}
       />
 
-      <div className="sort-controls-container">
+      <Row justify="center">
         <Button
+          size="large"
+          type="text"
           icon={<StepBackwardOutlined />}
           onClick={stepBackward}
-          // disabled={isDisabled(onBackward, backwardDisabled)}
         />
-
         <Button
+          size="large"
+          type="text"
           icon={
             timeoutIds.length > 0 ? <PauseOutlined /> : <PlayCircleOutlined />
           }
-          type="primary"
           onClick={() => (timeoutIds.length > 0 ? pause() : run(trace))}
-          // disabled={
-          //   playing
-          //     ? isDisabled(onPause, pauseDisabled)
-          //     : isDisabled(onPlay, playDisabled)
-          // }
         />
-
         <Button
+          size="large"
+          type="text"
           icon={<StepForwardOutlined />}
           onClick={stepForward}
-          // disabled={isDisabled(onForward, forwardDisabled)}
         />
-      </div>
-      {/* <SortControls
-        // onPlay={() => {
-        //   traceStep === -1 ? run(trace) : continueSort()
-        // }}
-        onPlay={() => run(trace)}
-        onPause={pause}
-        onForward={stepForward}
-        onBackward={stepBackward}
-        onAdjustSpeed={adjustPlaybackSpeed}
-        playing={timeoutIds.length > 0}
-        // playDisabled={
-        //   (traceStep >= trace.length - 1 && traceStep !== -1) ||
-        //   trace.length <= 0
-        // }
-        // forwardDisabled={this.state.traceStep >= this.state.trace.length - 1}
-        // backwardDisabled={this.state.traceStep <= 0}
-        playbackSpeed={playbackSpeed}
-      /> */}
+      </Row>
       <SortColorKey {...ALGORITHM_KEY[algorithm]} />
-      <SortDescription {...ALGORITHM_DESC[algorithm]} />
+      <SortDescription
+        {...ALGORITHM_DESC[algorithm]}
+        code={ALGORITHM_CODE[algorithm]}
+      />
     </MainLayout>
   )
 }

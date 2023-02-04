@@ -1,16 +1,13 @@
 .sort-color-key {
-    display: flex;
-    flex-flow: row wrap;
     padding: 1rem;
-    width: 80%;
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    text-align: left;
 
     .color-key-item {
       display: inline-flex;
       align-items: center;
-      margin-right: 4rem;
+      margin-right: 1rem;
       padding: 4px;
     }
     
