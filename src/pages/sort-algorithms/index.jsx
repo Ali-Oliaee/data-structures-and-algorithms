@@ -110,7 +110,7 @@ const SortAlgorithmsPage = () => {
   const [sortedIndices, setSortedIndices] = useState([])
   const [timeoutIds, setTimeoutIds] = useState([])
   const [playbackSpeed, setPlaybackSpeed] = useState(1)
-  const [algorithm, setAlgorithm] = useState("")
+  const [algorithm, setAlgorithm] = useState("Bubble Sort")
   const [arraySize, setArraySize] = useState(10)
   const prevArray = useRef("")
   const prevTrace = useRef("")
