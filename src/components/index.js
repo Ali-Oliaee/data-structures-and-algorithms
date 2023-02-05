@@ -1,2 +1,7 @@
 export { default as Header } from "./header"
 export { default as CodeWrapper } from "./code-wrapper"
+export { default as DataStructureCard } from "./ds-card"
+export { default as SortDescription } from "./sort-description"
+export { default as SortColorKey } from "./sort-color-key"
+export { default as SortPreview } from "./sort-preview"
+export { default as Bar } from "./bar"

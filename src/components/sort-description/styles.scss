@@ -1,0 +1,59 @@
+.sort-description {
+  text-align: left;
+  width: 90%;
+  max-width: 1200px;
+  padding: 1rem;
+  margin: 0 auto;
+
+  .SortInfo__Body {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .SortInfo__Article {
+    margin-top: 20px;
+    line-height: 24px;
+  }
+
+  li {
+    line-height: 1.2;
+  }
+
+  .SortInfo__Article a {
+    margin-inline-end: 4px;
+  }
+
+  td {
+    padding: 0.2rem 0;
+    min-width: 160px;
+  }
+
+  .SortInfo__Aside h3 {
+    margin: 1rem 0;
+  }
+
+  code {
+    padding-left: 1rem;
+    font-weight: 700;
+  }
+
+  @media (min-width: 992px) {
+    .SortInfo__Aside {
+      padding-left: 2ch;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .SortInfo__Article {
+      width: 55ch;
+      padding-right: 5ch;
+    }
+
+    .SortInfo__Aside {
+      padding-left: 5ch;
+      margin-top: 10px;
+      border-left: 1px solid rgb(209, 209, 214);
+    }
+  }
+
+}

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Button, Input } from "antd"
 import MainLayout from "@layouts"
-import { CodeWrapper } from "@components"
+import { CodeWrapper } from "../../components"
 import codes from "@utils/code/array"
 import "./styles.scss"
 

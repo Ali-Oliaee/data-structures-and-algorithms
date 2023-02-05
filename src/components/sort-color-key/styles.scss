@@ -1,0 +1,42 @@
+.sort-color-key {
+    padding: 1rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .color-key-item {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1rem;
+      padding: 4px;
+    }
+    
+    .ColorKey__Box {
+      flex-shrink: 0;
+      height: 1rem;
+      width: 1rem;
+      margin-right: 0.5rem;
+    }
+    
+    .ColorKey__Unsorted {
+      border: 1px solid rgb(209, 209, 214);
+      background-color: #fff;
+    }
+    .ColorKey__Sorted {
+      background-color: #338a3e ;
+    }
+    .ColorKey__GroupA {
+      background-color: #ffd54f;
+    }
+    .ColorKey__GroupB {
+      background-color: #f06292;
+    }
+    .ColorKey__GroupC {
+      background-color: #ef5350;
+    }
+    .ColorKey__GroupD {
+      background-color: #42a5f5;
+    }
+    
+}
+  

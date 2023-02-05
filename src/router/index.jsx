@@ -9,12 +9,17 @@ import {
   ExpressionConvertorPage,
   MinHeapPage,
   MaxHeapPage,
+  SortAlgorithmsPage,
 } from "@pages"
 
 const router = createBrowserRouter([
   {
     path: "/data-structures-qiet/",
     element: <HomePage />,
+  },
+  {
+    path: "/data-structures-qiet/sort",
+    element: <SortAlgorithmsPage />,
   },
   {
     path: "/data-structures-qiet/array",

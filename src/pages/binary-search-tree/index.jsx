@@ -1,11 +1,11 @@
 import { BinarySearchTree, useBinarySearchTree } from "react-tree-vis"
-import { Button, Collapse } from "antd"
+import { Button } from "antd"
 import MainLayout from "@layouts"
-import Codes from "./codes"
+import code from "@utils/code/binary-search-tree"
+import { CodeWrapper } from "@/components"
 import "./styles.scss"
 
 const BSTPage = () => {
-  const { Panel } = Collapse
   const { ref, insert, remove, search, clear, generateRandomTree } =
     useBinarySearchTree()
   return (
@@ -18,11 +18,7 @@ const BSTPage = () => {
         to or less than are stored on the left sub-tree satisfying the binary
         search property
       </p>
-      <Collapse className="codes-container">
-        <Panel header="Codes">
-          <Codes />
-        </Panel>
-      </Collapse>
+      <CodeWrapper data={code} />
       <Button
         type="primary"
         onClick={() => insert(Math.floor(Math.random() * 100))}
