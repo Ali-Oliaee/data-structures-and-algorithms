@@ -24,7 +24,7 @@ export default [
 					r = r->Rchild;
 				else
 				{
-					std::cout << "The "<< data << " is duplicate !!\n";
+					std::cout << "The "<< data << " is duplicate !!";
 					return false;
 				}
 			}
