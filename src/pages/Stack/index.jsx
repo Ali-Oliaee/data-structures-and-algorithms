@@ -2,7 +2,11 @@ import { useState } from "react"
 import { Button, message } from "antd"
 import { CodeWrapper } from "@/components"
 import MainLayout from "@layouts"
+<<<<<<< HEAD
 import codes from "@utils/code/stack"
+=======
+import codes from "@utils/code/array"
+>>>>>>> 20b2b56 (improve max heap functionality)
 import "./styles.scss"
 
 const StackPage = () => {
@@ -13,6 +17,7 @@ const StackPage = () => {
   const [peek, setPeek] = useState(null)
 
   const pop = () => {
+<<<<<<< HEAD
     if (stack.length === 0) return messageApi.error("Stack is Empty!")
     setIsEmpty(null)
     setIsFull(null)
@@ -22,11 +27,26 @@ const StackPage = () => {
 
   const push = () => {
     if (stack.length === 5) return messageApi.error("Stack Overflow!")
+=======
+    if (stack.length === 0) return messageApi.error("Stack is empty")
+    setIsEmpty(null)
+    setIsFull(null)
+    setPeek(null)
+    setStack(stack.slice(0, stack.length - 1))
+  }
+
+  const push = () => {
+    if (stack.length === 5) return messageApi.error("Stack is full")
+>>>>>>> 20b2b56 (improve max heap functionality)
     setIsEmpty(null)
     setIsFull(null)
     setPeek(null)
     const random = Math.floor(Math.random() * 100)
+<<<<<<< HEAD
     setStack([random, ...stack])
+=======
+    setStack([...stack, random])
+>>>>>>> 20b2b56 (improve max heap functionality)
   }
 
   return (

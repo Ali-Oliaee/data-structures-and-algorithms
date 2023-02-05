@@ -4,6 +4,7 @@ export default [
     codes: [
       {
         subtitle: "Insert",
+<<<<<<< HEAD
         code: `bool BST::insert(int data) {
   Node *r = root, *leaf;
   if(root == NULL){
@@ -31,6 +32,42 @@ export default [
   else leaf->Rchild = r;
   return true;
 }`,
+=======
+        code: `
+          bool BST::insert(int data)
+          {
+              Node *r = root, *leaf;
+              if(root == NULL)
+              {
+                  Node *Root = new Node();
+                  Root->data = data;
+                  root = Root;
+                  return true;
+              }
+              while(r != NULL)
+              {
+                  leaf = r;
+                  if(data < r->data)
+                      r = r->Lchild;
+                  else if(data > r->data)
+                      r = r->Rchild;
+                  else
+                  {
+                      std::cout << "The "<< data << " is duplicate !!";
+                      return false;
+                  }
+              }
+  
+              r = new Node();
+              r->data = data;
+  
+              if(data < leaf->data)
+                  leaf->Lchild = r;
+              else
+                  leaf->Rchild = r;
+              return true;
+          }`,
+>>>>>>> 20b2b56 (improve max heap functionality)
       },
     ],
   },
@@ -161,6 +198,7 @@ export default [
     codes: [
       {
         subtitle: "Delete",
+<<<<<<< HEAD
         code: `bool BST::Delete(int key){
   if(root == NULL) return false;
 
@@ -202,6 +240,62 @@ export default [
     else root = child;
   }
 }`,
+=======
+        code: `bool BST::Delete(int key)
+          {
+              if(root == NULL)
+                  return false;
+              if(!search(key))
+              {
+                  std::cout << " There is no such value to be deleted !!";
+                  return false;
+              }
+  
+              Node *current = recSearch(root,key);
+              Node *parent = successor(key);
+  
+              if(current == NULL)
+                  return false;
+              // deleting a leaf node	----------------
+              if(current->Lchild == NULL && current->Rchild == NULL)
+              {
+                  if(current != root)
+                  {
+                      if(parent->Lchild == current)
+                          parent->Lchild = NULL;
+                      else
+                          parent->Rchild = NULL;
+                  }
+                  else
+                      root = NULL;
+              }
+              // -------------------------------------
+              // deleting a node with 2 children -----
+              else if(current->Lchild && current->Rchild)
+              {
+                  Node *min = minValue(current->Rchild);
+                  int value = min->data;
+                  Delete(value);
+                  current->data = value;
+              }
+              // -------------------------------------
+              // deleting a node with one chid -------
+              else
+              {
+                  Node *child = (current->Lchild) ? current->Lchild : current->Rchild;
+                  if(current != root)
+                  {
+                      if(current == parent->Lchild)
+                          parent->Lchild = child;
+                      else
+                          parent->Rchild = child;
+                  }
+                  else
+                      root = child;
+              }
+              // -------------------------------------
+          }`,
+>>>>>>> 20b2b56 (improve max heap functionality)
       },
     ],
   },
