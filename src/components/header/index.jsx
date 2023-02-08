@@ -1,5 +1,10 @@
 import { Layout } from "antd"
-import { GithubFilled } from "@ant-design/icons"
+import {
+  GithubFilled,
+  InstagramFilled,
+  LinkedinFilled,
+  LinkOutlined,
+} from "@ant-design/icons"
 import { Link } from "react-router-dom"
 import "./styles.scss"
 
