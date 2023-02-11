@@ -128,20 +128,36 @@ export const MergeSortDesc = {
 
 export const MergeSortCode = (
   <SyntaxHighlighter language="cpp" style={tomorrow}>{`
-  void mergeSort(int * arr, int n){
-      int arr[6], i, elem;
-      cout<<"Enter 5 Array Elements: ";
-      for(i=0; i<5; i++)
-          cin>>arr[i];
-      cout<<"Enter Element to Insert: ";
-      cin>>elem;
-      arr[i] = elem;
-      cout<<"The New Array is:";
-      for(i=0; i<6; i++)
-          cout<<arr[i]<<"  ";
-      cout<<endl;
-      return 0;
-  }`}</SyntaxHighlighter>
+void mergeSort(int arr[], int low, int high){
+  if(low < high)
+    int mid = (low + high) / 2;
+
+    mergeSort(arr, low, mid);
+    mergeSort(arr, mid + 1, high);
+
+    merge(arr, low, mid, high);
+}
+
+void merge(int arr[], int low, int mid, int high){
+  int n = high - low + 1;
+  int *b = new int[n];
+  int left = low, right = mid + 1, bIdx = 0;
+
+  while(left <= mid && right <= high){
+    if(arr[left] <= arr[right])
+      b[bIdx++] = arr[left++];
+    else
+      b[bIdx++] = arr[right++];
+  }
+
+  while(left <= mid) b[bIdx++] = arr[left++];
+  while(right <= high) b[bIdx++] = arr[right++];
+
+  for(int i = 0; i < n; i++)
+    arr[low + i] = b[i];
+
+  delete[] b;
+}`}</SyntaxHighlighter>
 )
 
 export default MergeSort

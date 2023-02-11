@@ -67,20 +67,15 @@ export const SelectionSortDesc = {
 
 export const SelectionSortCode = (
   <SyntaxHighlighter language="cpp" style={tomorrow}>{`
-  void SelectionSort(int * arr, int n){
-      int arr[6], i, elem;
-      cout<<"Enter 5 Array Elements: ";
-      for(i=0; i<5; i++)
-          cin>>arr[i];
-      cout<<"Enter Element to Insert: ";
-      cin>>elem;
-      arr[i] = elem;
-      cout<<"The New Array is:";
-      for(i=0; i<6; i++)
-          cout<<arr[i]<<"  ";
-      cout<<endl;
-      return 0;
-  }`}</SyntaxHighlighter>
+void selectionSort(int arr[], int n){
+  for (int i = n - 1; i >= 1; i--){
+      int min_idx = i;
+      for (j = 0; j < i; j++)
+        if (arr[j] >= arr[min_idx])
+          min_idx = j;
+      swap(arr[min_idx], arr[i]);
+  }
+}`}</SyntaxHighlighter>
 )
 
 export default SelectionSort
