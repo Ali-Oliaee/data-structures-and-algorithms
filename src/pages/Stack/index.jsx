@@ -3,10 +3,14 @@ import { Button, message } from "antd"
 import { CodeWrapper } from "@/components"
 import MainLayout from "@layouts"
 <<<<<<< HEAD
+<<<<<<< HEAD
 import codes from "@utils/code/stack"
 =======
 import codes from "@utils/code/array"
 >>>>>>> 20b2b56 (improve max heap functionality)
+=======
+import codes from "@utils/code/stack"
+>>>>>>> d55f013 (refactor codes)
 import "./styles.scss"
 
 const StackPage = () => {
@@ -17,6 +21,7 @@ const StackPage = () => {
   const [peek, setPeek] = useState(null)
 
   const pop = () => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     if (stack.length === 0) return messageApi.error("Stack is Empty!")
     setIsEmpty(null)
@@ -29,6 +34,9 @@ const StackPage = () => {
     if (stack.length === 5) return messageApi.error("Stack Overflow!")
 =======
     if (stack.length === 0) return messageApi.error("Stack is empty")
+=======
+    if (stack.length === 0) return messageApi.error("Stack is Empty!")
+>>>>>>> d55f013 (refactor codes)
     setIsEmpty(null)
     setIsFull(null)
     setPeek(null)
@@ -36,8 +44,12 @@ const StackPage = () => {
   }
 
   const push = () => {
+<<<<<<< HEAD
     if (stack.length === 5) return messageApi.error("Stack is full")
 >>>>>>> 20b2b56 (improve max heap functionality)
+=======
+    if (stack.length === 5) return messageApi.error("Stack Overflow!")
+>>>>>>> d55f013 (refactor codes)
     setIsEmpty(null)
     setIsFull(null)
     setPeek(null)

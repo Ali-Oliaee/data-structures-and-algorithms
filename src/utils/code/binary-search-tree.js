@@ -5,6 +5,9 @@ export default [
       {
         subtitle: "Insert",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d55f013 (refactor codes)
         code: `bool BST::insert(int data) {
   Node *r = root, *leaf;
   if(root == NULL){
@@ -32,6 +35,7 @@ export default [
   else leaf->Rchild = r;
   return true;
 }`,
+<<<<<<< HEAD
 =======
         code: `
           bool BST::insert(int data)
@@ -68,6 +72,8 @@ export default [
               return true;
           }`,
 >>>>>>> 20b2b56 (improve max heap functionality)
+=======
+>>>>>>> d55f013 (refactor codes)
       },
     ],
   },
@@ -199,6 +205,9 @@ export default [
       {
         subtitle: "Delete",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d55f013 (refactor codes)
         code: `bool BST::Delete(int key){
   if(root == NULL) return false;
 
@@ -240,6 +249,7 @@ export default [
     else root = child;
   }
 }`,
+<<<<<<< HEAD
 =======
         code: `bool BST::Delete(int key)
           {
@@ -296,6 +306,8 @@ export default [
               // -------------------------------------
           }`,
 >>>>>>> 20b2b56 (improve max heap functionality)
+=======
+>>>>>>> d55f013 (refactor codes)
       },
     ],
   },
