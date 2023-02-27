@@ -14,14 +14,12 @@ const SortControls = ({
   onPause,
   onBackward,
   onForward,
-  onRepeat,
   onAdjustSpeed,
   playing,
   playDisabled,
   pauseDisabled,
   backwardDisabled,
   forwardDisabled,
-  repeatDisabled,
   playbackSpeed,
 }) => {
   const isDisabled = (action, disabled = false) =>
@@ -30,16 +28,9 @@ const SortControls = ({
   return (
     <div className="sort-controls-container">
       <Button
-        icon={<RollbackOutlined />}
-        // onClick={onRepeat}
-        disabled={isDisabled(onRepeat, repeatDisabled)}
-        className="VisualizerControls__Button"
-      />
-
-      <Button
         icon={<StepBackwardOutlined />}
-        // onClick={onBackward}
-        disabled={isDisabled(onBackward, backwardDisabled)}
+        onClick={onBackward}
+        // disabled={isDisabled(onBackward, backwardDisabled)}
         className="VisualizerControls__Button"
       />
 
@@ -56,12 +47,10 @@ const SortControls = ({
 
       <Button
         icon={<StepForwardOutlined />}
-        // onClick={onForward}
-        disabled={isDisabled(onForward, forwardDisabled)}
+        onClick={onForward}
+        // disabled={isDisabled(onForward, forwardDisabled)}
         className="VisualizerControls__Button"
       />
-
-      <Select placeholder="1x" options={sortSpeeds} onChange={onAdjustSpeed} />
     </div>
   )
 }
