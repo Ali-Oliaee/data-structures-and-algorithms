@@ -1,7 +1,7 @@
-import { Input } from "antd"
-import { Button, Collapse } from "antd"
+import { Button, Input } from "antd"
 import MainLayout from "@layouts"
-import Codes from "./codes"
+import codes from "@utils/code/array"
+import { CodeWrapper } from "@/components"
 import "./styles.scss"
 
 const EXTPage = () => {
@@ -160,90 +160,47 @@ const EXTPage = () => {
     if (infix) {
       var reversePrefix = InfixToPrefix(infix)
       var prefix = reversePrefix.reverse()
-      document.getElementById("Prefix").innerHTML =
-        "Prefix: " + prefix.join("  ")
+
       const et = new ExpTree(prefix)
       var treeContent = document.getElementById("Tree")
       treeContent.innerHTML = ""
       et.draw(treeContent)
-      document.getElementById("PrefixWrapper").className = "visible"
       document.querySelector(".controls-wrapper").className = "controls-wrapper"
     } else {
-      document.getElementById("Prefix").innerHTML = "Error"
-      document.getElementById("PrefixWrapper").className = "visible"
       document.querySelector(".controls-wrapper").className += " error"
       var treeContent = document.getElementById("Tree")
       treeContent.innerHTML = ""
     }
   }
 
-  //Memory stats
-  var bars = []
-  var gh = 200 //Graph height
-  var numBars = 100
-  var count = 0
-
-  for (var i = 0; i < numBars; i++) {
-    var bar = document.createElement("div")
-    bar.className = "bar"
-    var val = document.createElement("div")
-    val.className = "val"
-    bar.appendChild(val)
-    // var barsEl = document.querySelector(".bars")
-    // barsEl.appendChild(bar)
-    bars.push(bar)
-  }
-
-  //Stare animation
-  tick()
-
-  function tick() {
-    requestAnimationFrame(tick)
-    var id = count % numBars
-    var b = bars[id]
-    var performanceMiBytes = (
-      performance.memory.usedJSHeapSize / 1048576
-    ).toFixed(2)
-    var m = (performanceMiBytes / 100) * 30
-    b.style.order = count
-    b.firstChild.style.height = m + "px"
-    count++
-  }
-
-  if (!window.requestAnimationFrame) {
-    window.requestAnimationFrame = (function () {
-      return (
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function (/* function */ callback, /* DOMElement */ element) {
-          window.setTimeout(callback, 1000 / 60)
-        }
-      )
-    })()
-  }
-
   return (
     <MainLayout>
       <div className="ext-page">
-        <div className="main">
-          <div className="controls-wrapper">
-            <input
-              id="Entry"
-              type="text"
-              className="controls"
-              placeholder="Enter an expression..."
-            />
-            <button id="Evaluate" onClick={Evaluate} className="controls btn">
-              Create
-            </button>
-          </div>
-          <div id="PrefixWrapper" className="invisible">
-            <div id="Prefix"></div>
-          </div>
-          <div id="Tree"></div>
-        </div>
+        <h1>Expression Tree </h1>
+        <p className="description">
+          Based on the operator position, expressions are divided into THREE
+          types. They are as follows... Infix Expression Postfix Expression
+          Prefix Expression Infix Expression In infix expression, operator is
+          used in between the operands. The general structure of an Infix
+          expression is as follows... Postfix Expression In postfix expression,
+          operator is used after operands. We can say that "Operator follows the
+          Operands". The general structure of Postfix expression is as
+          follows...Prefix Expression In prefix expression, operator is used
+          before operands. We can say that "Operands follows the Operator". The
+          general structure of Prefix expression is as follows...
+        </p>
+        <Input.Group compact size="large">
+          <Input
+            id="Entry"
+            className="input"
+            placeholder="Enter an expression"
+          />
+          <Button id="Evaluate" type="primary" onClick={Evaluate} size="large">
+            Create
+          </Button>
+        </Input.Group>
+        <div id="Tree" />
+        <CodeWrapper data={codes} />
       </div>
     </MainLayout>
   )

@@ -31,9 +31,7 @@ const HomePage = () => {
         loaded={particlesLoaded}
         options={options}
       />
-      <h1 className="title">Welcome</h1>
-      <h4 className="divider-text">to</h4>
-      <h2 className="subtitle">Data Structures</h2>
+      <h2 className="title">Data Structures & Algorithms</h2>
       <div className="card-container">
         <DataStructureCard
           title="Sorting Algorithms"
