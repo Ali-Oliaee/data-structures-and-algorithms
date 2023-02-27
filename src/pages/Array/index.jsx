@@ -1,9 +1,8 @@
 import { useState } from "react"
-import { Button, Collapse } from "antd"
-import ArraySidebar from "./sidebar"
+import { Collapse, Button, Input } from "antd"
 import MainLayout from "../../layout"
-import "./styles.scss"
 import Codes from "./codes"
+import "./styles.scss"
 
 const ArrayPage = () => {
   const { Panel } = Collapse
@@ -11,10 +10,9 @@ const ArrayPage = () => {
   const [index, setIndex] = useState(null)
   const [value, setValue] = useState(null)
   const [length, setLength] = useState(10)
-
   const createRandomArray = () => {
     setArr([])
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < 10; i++) {
       let random = Math.floor(Math.random() * 100)
       setArr((prev) => [...prev, random])
     }
@@ -37,7 +35,7 @@ const ArrayPage = () => {
   }
 
   return (
-    <MainLayout sidebar={<ArraySidebar />}>
+    <MainLayout>
       <div className="array-page">
         <h1 className="title">Array</h1>
         <div className="array-container">
@@ -49,74 +47,124 @@ const ArrayPage = () => {
           ))}
         </div>
         <div className="description-container">
-          <h4 className="length">Array Length: {arr.length}</h4>
+          <h4 className="length">Length: {arr.length}</h4>
           An array is a collection of elements of the same type placed in
           contiguous memory locations that can be individually referenced by
           using an index to a unique identifier. Five values of type int can be
           declared as an array without having to declare five different
           variables (each with its own identifier).
         </div>
-        <Collapse className="codes-container">
-          <Panel header="Codes">
-            <Codes />
-          </Panel>
-        </Collapse>
-        {/* <Button type="primary" onClick={createRandomArray}>
-          Create Random Array
-        </Button>
-        <input
-          type="number"
-          placeholder="value"
-          onChange={(text) => setValue(text.target.value)}
-        />
-        <Button
-          type="primary"
-          onClick={() => setArr((prev) => [...prev, value])}
-        >
-          Insert at End
-        </Button>
-        <input
-          type="number"
-          placeholder="value"
-          onChange={(text) => setValue(text.target.value)}
-        />
-        <Button
-          type="primary"
-          onClick={() => setArr((prev) => [value, ...prev])}
-        >
-          Insert at Start
-        </Button>
-        <input
-          type="number"
-          placeholder="index"
-          onChange={(text) => setIndex(text.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="value"
-          onChange={(text) => setValue(text.target.value)}
-        />
-        <Button type="primary" onClick={insertAfterIndex}>
-          Insert After Index
-        </Button>
-        <Button
-          type="primary"
-          onClick={() => setArr((prev) => prev.slice(0, prev.length - 1))}
-        >
-          Delete at End
-        </Button>
-        <Button
-          type="primary"
-          onClick={() => setArr((prev) => prev.slice(1, prev.length))}
-        >
-          Delete at Start
-        </Button>
-        <Button
-          type="primary"
-          onClick={() => setArr([...arr.sort((a, b) => a - b)])}
-        >
-          sort
-        </Button> */}
+        <div className="info">
+          <Collapse className="codes-container">
+            <Panel header="Codes">
+              <Codes />
+            </Panel>
+          </Collapse>
+          <div className="options">
+            <div className="option">
+              <Button
+                type="primary"
+                className="button"
+                onClick={createRandomArray}
+              >
+                Create Random Array
+              </Button>
+            </div>
+            <div className="option">
+              <Input.Group compact>
+                <Input
+                  type="number"
+                  placeholder="value"
+                  className="input"
+                  onChange={(text) => setValue(text.target.value)}
+                />
+                <Button
+                  type="primary"
+                  className="button"
+                  onClick={() => setArr((prev) => [...prev, value])}
+                >
+                  Insert at End
+                </Button>
+              </Input.Group>
+            </div>
+            <div className="option">
+              <Input.Group compact>
+                <Input
+                  type="number"
+                  className="input"
+                  placeholder="value"
+                  onChange={(text) => setValue(text.target.value)}
+                />
+                <Button
+                  type="primary"
+                  className="button"
+                  onClick={() => setArr((prev) => [value, ...prev])}
+                >
+                  Insert at Start
+                </Button>
+              </Input.Group>
+            </div>
+            <div className="option">
+              <Input.Group compact>
+                <Input
+                  type="number"
+                  className="input"
+                  placeholder="index"
+                  onChange={(text) => setIndex(text.target.value)}
+                />
+                <Input
+                  type="number"
+                  className="input"
+                  placeholder="value"
+                  onChange={(text) => setValue(text.target.value)}
+                />
+                <Button
+                  type="primary"
+                  className="button"
+                  onClick={insertAfterIndex}
+                >
+                  Insert After Index
+                </Button>
+              </Input.Group>
+            </div>
+            <div className="option">
+              <Button
+                type="primary"
+                className="button"
+                onClick={() => setArr((prev) => prev.slice(0, prev.length - 1))}
+              >
+                Delete at End
+              </Button>
+            </div>
+            <div className="option">
+              <Button
+                type="primary"
+                className="button"
+                onClick={() => setArr((prev) => prev.slice(1, prev.length))}
+              >
+                Delete at Start
+              </Button>
+            </div>
+            <div className="option">
+              <Button
+                type="primary"
+                className="button"
+                onClick={() => setArr([...arr.sort((a, b) => a - b)])}
+              >
+                Sort Ascending
+              </Button>
+            </div>
+            <div className="option">
+              <Button
+                type="primary"
+                className="button"
+                onClick={() => setArr([...arr.sort((a, b) => b - a)])}
+              >
+                Sort Descending
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     </MainLayout>
   )
