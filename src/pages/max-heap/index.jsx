@@ -1,17 +1,15 @@
+import { useState } from "react"
 import { MaxHeap, useHeap } from "react-tree-vis"
-import { Button, Collapse } from "antd"
+import { Button, Collapse, message, Input } from "antd"
 import MainLayout from "@layouts"
 import Codes from "./codes"
-import "./styles.scss"
 import {
   FullscreenExitOutlined,
   FullscreenOutlined,
   ZoomInOutlined,
   ZoomOutOutlined,
 } from "@ant-design/icons"
-import { useState } from "react"
-import { Input } from "antd"
-import { message } from "antd"
+import "./styles.scss"
 
 const MaxHeapPage = () => {
   const [messageApi, contextHolder] = message.useMessage()
