@@ -4,7 +4,7 @@ import path from "path"
 
 export default defineConfig({
   plugins: [react()],
-  base: "/data-structures-qiet/",
+  base: "/data-structures-and-algorithms/",
   resolve: {
     alias: [
       { find: "@", replacement: path.resolve(__dirname, "src") },

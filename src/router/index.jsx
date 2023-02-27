@@ -14,43 +14,43 @@ import {
 
 const router = createBrowserRouter([
   {
-    path: "/data-structures-qiet/",
+    path: "/data-structures-and-algorithms/",
     element: <HomePage />,
   },
   {
-    path: "/data-structures-qiet/sort",
+    path: "/data-structures-and-algorithms/sort",
     element: <SortAlgorithmsPage />,
   },
   {
-    path: "/data-structures-qiet/array",
+    path: "/data-structures-and-algorithms/array",
     element: <ArrayPage />,
   },
   {
-    path: "/data-structures-qiet/queue",
+    path: "/data-structures-and-algorithms/queue",
     element: <QueuePage />,
   },
   {
-    path: "/data-structures-qiet/bst",
+    path: "/data-structures-and-algorithms/bst",
     element: <BSTPage />,
   },
   {
-    path: "/data-structures-qiet/stack",
+    path: "/data-structures-and-algorithms/stack",
     element: <StackPage />,
   },
   {
-    path: "/data-structures-qiet/ext",
+    path: "/data-structures-and-algorithms/ext",
     element: <EXTPage />,
   },
   {
-    path: "/data-structures-qiet/expressions",
+    path: "/data-structures-and-algorithms/expressions",
     element: <ExpressionConvertorPage />,
   },
   {
-    path: "/data-structures-qiet/min-heap",
+    path: "/data-structures-and-algorithms/min-heap",
     element: <MinHeapPage />,
   },
   {
-    path: "/data-structures-qiet/max-heap",
+    path: "/data-structures-and-algorithms/max-heap",
     element: <MaxHeapPage />,
   },
 ])
