@@ -1,19 +1,18 @@
 import { useState } from "react"
 import { MinHeap, useHeap } from "react-tree-vis"
-import { Button, Collapse, message, Input } from "antd"
+import { Button, message, Input } from "antd"
 import MainLayout from "@layouts"
-import Codes from "./codes"
 import {
   FullscreenExitOutlined,
   FullscreenOutlined,
   ZoomInOutlined,
   ZoomOutOutlined,
 } from "@ant-design/icons"
+import { CodeWrapper } from "@/components"
 import "./styles.scss"
 
 const MinHeapPage = () => {
   const [messageApi, contextHolder] = message.useMessage()
-  const { Panel } = Collapse
   const { ref, insert, remove, clear, generateRandomTree, getData } = useHeap()
   const [scale, setScale] = useState(1)
   const [insertValue, setInsertValue] = useState(null)
@@ -31,11 +30,7 @@ const MinHeapPage = () => {
             greater than or equal to the values of its children. Max Heap data
             structure is useful for sorting data using heap sort.
           </p>
-          <Collapse className="codes-container">
-            <Panel header="Codes">
-              <Codes />
-            </Panel>
-          </Collapse>
+          {/* <CodeWrapper /> */}
         </div>
         <div
           className={

@@ -1,12 +1,12 @@
 import { useState } from "react"
 import MainLayout from "@layouts"
-import { Button, Collapse, message } from "antd"
-import Codes from "./codes"
+import { Button, message } from "antd"
+import codes from "@utils/code/queue"
+import { CodeWrapper } from "@/components"
 import "./styles.scss"
 
 const QueuePage = () => {
   const [messageApi, contextHolder] = message.useMessage()
-  const { Panel } = Collapse
   const [queue, setQueue] = useState([1, 3])
   const dequeue = () => {
     if (queue.length === 0) return messageApi.error("Queue is empty")
@@ -54,11 +54,7 @@ const QueuePage = () => {
             </Button>
           </div>
         </div>
-        <Collapse className="codes-container">
-          <Panel header="Codes">
-            <Codes />
-          </Panel>
-        </Collapse>
+        <CodeWrapper data={codes} />
       </div>
     </MainLayout>
   )

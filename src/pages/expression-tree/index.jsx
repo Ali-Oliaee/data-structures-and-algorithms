@@ -1,6 +1,5 @@
 import { Button, Input } from "antd"
 import MainLayout from "@layouts"
-import codes from "@utils/code/array"
 import { CodeWrapper } from "@/components"
 import "./styles.scss"
 
@@ -200,7 +199,7 @@ const EXTPage = () => {
           </Button>
         </Input.Group>
         <div id="Tree" />
-        <CodeWrapper data={codes} />
+        {/* <CodeWrapper data={codes} /> */}
       </div>
     </MainLayout>
   )
