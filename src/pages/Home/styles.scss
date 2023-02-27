@@ -1,0 +1,34 @@
+.home-page {
+    background-color: #386641;
+    width: 100%;
+    min-height: 100vh;
+    padding-block: 50px;
+
+    .card-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding:  1rem;
+
+    }
+    .title {
+        color: #f2e8cf;
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+    }
+    .divider-text {
+        color: #f2e8cf;
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-align: center;
+    }
+    .subtitle {
+        color: #f2e8cf;
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-align: center;
+    }   
+}
