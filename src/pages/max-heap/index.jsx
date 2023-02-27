@@ -27,13 +27,11 @@ const MaxHeapPage = () => {
       {contextHolder}
       <div className="max-heap-page">
         <div className="description-container">
-          <h1>Max Heap page</h1>
+          <h1>Max Heap</h1>
           <p className="description">
-            A binary search tree is a rooted binary tree in which the nodes are
-            arranged in total order in which the nodes with keys greater than
-            any particular node is stored on the right sub-trees and the ones
-            with equal to or less than are stored on the left sub-tree
-            satisfying the binary search property
+            A max heap is a complete binary tree in which the value of a node is
+            greater than or equal to the values of its children. Max Heap data
+            structure is useful for sorting data using heap sort.
           </p>
           <Collapse className="codes-container">
             <Panel header="Codes">
