@@ -241,7 +241,6 @@ const EXTPage = () => {
           </div>
           <div id="PrefixWrapper" className="invisible">
             <div id="Prefix"></div>
-            <span className="time"></span>
           </div>
           <div id="Tree"></div>
         </div>
