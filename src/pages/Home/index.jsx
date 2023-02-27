@@ -1,4 +1,5 @@
 import { DataStructureCard } from "@/components"
+import { useCallback } from "react"
 import array from "@assets/array.png"
 import stack from "@assets/stack.png"
 import queue from "@assets/queue.png"
@@ -8,13 +9,28 @@ import postfix from "@assets/postfix-expression.png"
 import ext from "@assets/ext.png"
 import maxHeap from "@assets/max-heap.png"
 import minHeap from "@assets/min-heap.png"
+import Particles from "react-particles"
+import options from "@utils/particle-config"
+import { loadFull } from "tsparticles"
 import "./styles.scss"
 
 const HomePage = () => {
-  const customInit = async (engine) => await loadFireflyPreset(engine)
+  const particlesInit = useCallback(async (engine) => {
+    console.log(engine)
+    await loadFull(engine)
+  }, [])
+
+  const particlesLoaded = useCallback(async (container) => {
+    await console.log(container)
+  }, [])
 
   return (
     <div className="home-page">
+      <Particles
+        init={particlesInit}
+        loaded={particlesLoaded}
+        options={options}
+      />
       <h1 className="title">Welcome</h1>
       <h4 className="divider-text">to</h4>
       <h2 className="subtitle">Data Structures</h2>
@@ -46,7 +62,7 @@ const HomePage = () => {
         <DataStructureCard
           title="Queue"
           description="A queue is a linear structure which follows a particular order in
-          which the operations are performed. The order is First In First Out 
+          which the operations are performed. The order is First In First Out
           (FIFO)."
           image={queue}
           link="/data-structures-qiet/queue"
