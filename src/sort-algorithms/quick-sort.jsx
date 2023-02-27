@@ -173,20 +173,30 @@ export const QuickSortDesc = {
 
 export const QuickSortCode = (
   <SyntaxHighlighter language="cpp" style={tomorrow}>{`
-  void quickSort(int * arr, int n){
-      int arr[6], i, elem;
-      cout<<"Enter 5 Array Elements: ";
-      for(i=0; i<5; i++)
-          cin>>arr[i];
-      cout<<"Enter Element to Insert: ";
-      cin>>elem;
-      arr[i] = elem;
-      cout<<"The New Array is:";
-      for(i=0; i<6; i++)
-          cout<<arr[i]<<"  ";
-      cout<<endl;
-      return 0;
-  }`}</SyntaxHighlighter>
+void quickSort(int arr[], int low, int high) {
+  if (low < high) 
+    int pivotIdx = partition(arr, low, high);
+
+  quickSort(arr, low, pivotIdx - 1);
+  quickSort(arr, pivotIdx + 1, high);
+}
+
+int partition(int arr[], int left, int right) {
+  int pivot = arr[left];
+  int i = left;
+  int j = right + 1;
+  for (;;) {
+    while (arr[++i] < pivot) 
+      if (i >= right) break;
+    while (arr[--j] > pivot)
+      if (j <= left) break;
+    if (i >= j) break;
+    else swap(arr[i], arr[j]);
+  }
+  if (j == left) return j;
+  swap(arr[left], arr[j]);
+  return j;
+}`}</SyntaxHighlighter>
 )
 
 export default QuickSort

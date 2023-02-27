@@ -29,21 +29,11 @@ import QuickSort, {
   QuickSortDesc,
   QuickSortCode,
 } from "@/sort-algorithms/quick-sort"
-import QuickSort3, {
-  QuickSort3Key,
-  QuickSort3Desc,
-  QuickSort3Code,
-} from "@/sort-algorithms/quick-sort3"
 import SelectionSort, {
   SelectionSortKey,
   SelectionSortDesc,
   SelectionSortCode,
 } from "@/sort-algorithms/selection-sort"
-import ShellSort, {
-  ShellSortKey,
-  ShellSortDesc,
-  ShellSortCode,
-} from "@/sort-algorithms/shell-sort"
 import sortSpeeds from "@/utils/sort-speeds"
 import { useRef } from "react"
 import {
@@ -61,9 +51,7 @@ const SortAlgorithmsPage = () => {
     "Insertion Sort": InsertionSort,
     "Merge Sort": MergeSort,
     "Quick Sort": QuickSort,
-    "Quick Sort 3": QuickSort3,
     "Heap Sort": HeapSort,
-    "Shell Sort": ShellSort,
   }
 
   const ALGORITHM_KEY = {
@@ -72,9 +60,7 @@ const SortAlgorithmsPage = () => {
     "Insertion Sort": InsertionSortKey,
     "Merge Sort": MergeSortKey,
     "Quick Sort": QuickSortKey,
-    "Quick Sort 3": QuickSort3Key,
     "Heap Sort": HeapSortKey,
-    "Shell Sort": ShellSortKey,
   }
 
   const ALGORITHM_DESC = {
@@ -83,9 +69,7 @@ const SortAlgorithmsPage = () => {
     "Insertion Sort": InsertionSortDesc,
     "Merge Sort": MergeSortDesc,
     "Quick Sort": QuickSortDesc,
-    "Quick Sort 3": QuickSort3Desc,
     "Heap Sort": HeapSortDesc,
-    "Shell Sort": ShellSortDesc,
   }
 
   const ALGORITHM_CODE = {
@@ -94,9 +78,7 @@ const SortAlgorithmsPage = () => {
     "Insertion Sort": InsertionSortCode,
     "Merge Sort": MergeSortCode,
     "Quick Sort": QuickSortCode,
-    "Quick Sort 3": QuickSort3Code,
     "Heap Sort": HeapSortCode,
-    "Shell Sort": ShellSortCode,
   }
   const [messageApi, contextHolder] = message.useMessage()
   const [trace, setTrace] = useState([])

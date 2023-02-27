@@ -54,20 +54,11 @@ export const BubbleSortDescription = {
 
 export const BubbleSortCode = (
   <SyntaxHighlighter language="cpp" style={tomorrow}>{`
-  void BubbleSort(int * arr, int n){
-      int arr[6], i, elem;
-      cout<<"Enter 5 Array Elements: ";
-      for(i=0; i<5; i++)
-          cin>>arr[i];
-      cout<<"Enter Element to Insert: ";
-      cin>>elem;
-      arr[i] = elem;
-      cout<<"The New Array is:";
-      for(i=0; i<6; i++)
-          cout<<arr[i]<<"  ";
-      cout<<endl;
-      return 0;
-  }`}</SyntaxHighlighter>
+void bubbleSort(int arr[], int n){
+    for (int i = n - 1; i >= 1; i--)
+        for (int j = 1; j < n <= i; j++)
+            if (arr[j - 1] > arr[j]) swap(arr[j], arr[j - 1]);
+}`}</SyntaxHighlighter>
 )
 
 export default BubbleSort

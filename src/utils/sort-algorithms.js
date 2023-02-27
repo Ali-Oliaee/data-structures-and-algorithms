@@ -20,15 +20,7 @@ export default [
     value: "Quick Sort",
   },
   {
-    label: "Quick Sort 3",
-    value: "Quick Sort 3",
-  },
-  {
     label: "Heap Sort",
     value: "Heap Sort",
-  },
-  {
-    label: "Shell Sort",
-    value: "Shell Sort",
   },
 ]

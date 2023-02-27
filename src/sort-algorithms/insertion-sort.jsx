@@ -39,7 +39,7 @@ export const InsertionSortDesc = {
         rel="noopener noreferrer"
       >
         Insertion Sort
-      </a>{" "}
+      </a>
       is a simple sorting algorithm that iterates through an array and at each
       iteration it removes one element from the array, finds the location it
       belongs to in the sorted list and inserts it there, repeating until no
@@ -65,20 +65,13 @@ export const InsertionSortDesc = {
 
 export const InsertionSortCode = (
   <SyntaxHighlighter language="cpp" style={tomorrow}>{`
-  void InsertionSort(int * arr, int n){
-      int arr[6], i, elem;
-      cout<<"Enter 5 Array Elements: ";
-      for(i=0; i<5; i++)
-          cin>>arr[i];
-      cout<<"Enter Element to Insert: ";
-      cin>>elem;
-      arr[i] = elem;
-      cout<<"The New Array is:";
-      for(i=0; i<6; i++)
-          cout<<arr[i]<<"  ";
-      cout<<endl;
-      return 0;
-  }`}</SyntaxHighlighter>
+void insertionSort(int arr[], int n){
+  for (int i = 1; i < n; i++){
+      int next = arr[i];
+      for (int j = i - 1; j >= 0 && arr[j] > next; j--)
+        arr[j + 1] = next;
+  }
+}`}</SyntaxHighlighter>
 )
 
 export default InsertionSort

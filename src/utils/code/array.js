@@ -4,43 +4,23 @@ export default [
     codes: [
       {
         subtitle: "Insert at first",
-        code: `#include<iostream>
-        using namespace std;
-        int main()
-        {
-            int arr[6], i, elem;
-            cout<<"Enter 5 Array Elements: ";
-            for(i=0; i<5; i++)
-                cin>>arr[i];
-            cout<<"\nEnter Element to Insert: ";
-            cin>>elem;
-            arr[i] = elem;
-            cout<<"\nThe New Array is:\n";
-            for(i=0; i<6; i++)
-                cout<<arr[i]<<"  ";
-            cout<<endl;
-            return 0;
-        }`,
+        code: `void insertAtFirst(int array[], int &n, int newElement) {
+if (n + 1 < array.length()) {
+    for (int i = n - 1; i >= 0; i--) array[i + 1] = array[i];
+    array[0] = newElement;
+    n = n + 1;
+    } 
+}`,
       },
       {
         subtitle: "Insert at End",
-        code: `#include<iostream>
-        using namespace std;
-        int main()
-        {
-            int arr[6], i, elem;
-            cout<<"Enter 5 Array Elements: ";
-            for(i=0; i<5; i++)
-                cin>>arr[i];
-            cout<<"\nEnter Element to Insert: ";
-            cin>>elem;
-            arr[i] = elem;
-            cout<<"\nThe New Array is:\n";
-            for(i=0; i<6; i++)
-                cout<<arr[i]<<"  ";
-            cout<<endl;
-            return 0;
-        }`,
+        code: `void insertAtFirst(int array[], int &n, int newElement) {
+if (n + 1 < array.length()) {
+    for (int i = n - 1; i >= 0; i--) array[i + 1] = array[i];
+    array[0] = newElement;
+    n = n + 1;
+    } 
+}`,
       },
       {
         subtitle: "Insert after",
@@ -52,10 +32,10 @@ export default [
             cout<<"Enter 5 Array Elements: ";
             for(i=0; i<5; i++)
                 cin>>arr[i];
-            cout<<"\nEnter Element to Insert: ";
+            cout<<"Enter Element to Insert: ";
             cin>>elem;
             arr[i] = elem;
-            cout<<"\nThe New Array is:\n";
+            cout<<"The New Array is:";
             for(i=0; i<6; i++)
                 cout<<arr[i]<<"  ";
             cout<<endl;
@@ -77,10 +57,10 @@ export default [
               cout<<"Enter 5 Array Elements: ";
               for(i=0; i<5; i++)
                   cin>>arr[i];
-              cout<<"\nEnter Element to Insert: ";
+              cout<<"Enter Element to Insert: ";
               cin>>elem;
               arr[i] = elem;
-              cout<<"\nThe New Array is:\n";
+              cout<<"The New Array is:";
               for(i=0; i<6; i++)
                   cout<<arr[i]<<"  ";
               cout<<endl;
@@ -97,10 +77,10 @@ export default [
               cout<<"Enter 5 Array Elements: ";
               for(i=0; i<5; i++)
                   cin>>arr[i];
-              cout<<"\nEnter Element to Insert: ";
+              cout<<"Enter Element to Insert: ";
               cin>>elem;
               arr[i] = elem;
-              cout<<"\nThe New Array is:\n";
+              cout<<"The New Array is:";
               for(i=0; i<6; i++)
                   cout<<arr[i]<<"  ";
               cout<<endl;
@@ -117,10 +97,10 @@ export default [
               cout<<"Enter 5 Array Elements: ";
               for(i=0; i<5; i++)
                   cin>>arr[i];
-              cout<<"\nEnter Element to Insert: ";
+              cout<<"Enter Element to Insert: ";
               cin>>elem;
               arr[i] = elem;
-              cout<<"\nThe New Array is:\n";
+              cout<<"The New Array is:";
               for(i=0; i<6; i++)
                   cout<<arr[i]<<"  ";
               cout<<endl;
@@ -142,10 +122,10 @@ export default [
                 cout<<"Enter 5 Array Elements: ";
                 for(i=0; i<5; i++)
                     cin>>arr[i];
-                cout<<"\nEnter Element to Insert: ";
+                cout<<"Enter Element to Insert: ";
                 cin>>elem;
                 arr[i] = elem;
-                cout<<"\nThe New Array is:\n";
+                cout<<"The New Array is:";
                 for(i=0; i<6; i++)
                     cout<<arr[i]<<"  ";
                 cout<<endl;
@@ -162,10 +142,10 @@ export default [
                 cout<<"Enter 5 Array Elements: ";
                 for(i=0; i<5; i++)
                     cin>>arr[i];
-                cout<<"\nEnter Element to Insert: ";
+                cout<<"Enter Element to Insert: ";
                 cin>>elem;
                 arr[i] = elem;
-                cout<<"\nThe New Array is:\n";
+                cout<<"The New Array is:";
                 for(i=0; i<6; i++)
                     cout<<arr[i]<<"  ";
                 cout<<endl;
@@ -182,10 +162,10 @@ export default [
                 cout<<"Enter 5 Array Elements: ";
                 for(i=0; i<5; i++)
                     cin>>arr[i];
-                cout<<"\nEnter Element to Insert: ";
+                cout<<"Enter Element to Insert: ";
                 cin>>elem;
                 arr[i] = elem;
-                cout<<"\nThe New Array is:\n";
+                cout<<"The New Array is:";
                 for(i=0; i<6; i++)
                     cout<<arr[i]<<"  ";
                 cout<<endl;
