@@ -3,7 +3,7 @@ import BinarySearchTree from "../../classes/BST"
 import { useState } from "react"
 import "./styles.scss"
 import { useEffect } from "react"
-// import { Button } from "../../components"
+import { Button } from "antd"
 
 const BST = () => {
   const [bstree, setBinarySearchTree] = useState(null)
@@ -189,7 +189,9 @@ const BST = () => {
   return (
     <>
       <h1>Binary Search Tree</h1>
-      {/* <Button onClick={createRandomTree} text="Create Random Tree" /> */}
+      <Button onClick={createRandomTree} type="primary">
+        Create Random Tree
+      </Button>
     </>
   )
 }
