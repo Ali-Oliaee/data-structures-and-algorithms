@@ -1,11 +1,12 @@
 import { useState } from "react"
-import { Button, Input } from "antd"
+import { Button, Input, message } from "antd"
 import MainLayout from "@layouts"
 import { CodeWrapper } from "../../components"
 import codes from "@utils/code/array"
 import "./styles.scss"
 
 const ArrayPage = () => {
+  const [messageApi, contextHolder] = message.useMessage()
   const [arr, setArr] = useState([1, 2, 3, 4, 5])
   const [insertValue, setInsertValue] = useState(null)
   const [deleteValue, setDeleteValue] = useState(null)
@@ -20,6 +21,7 @@ const ArrayPage = () => {
 
   return (
     <MainLayout>
+      {contextHolder}
       <div className="array-page">
         <h1 className="title">Array</h1>
         <div className="array-container">
@@ -63,6 +65,8 @@ const ArrayPage = () => {
                   type="primary"
                   className="button"
                   onClick={() => {
+                    if (arr.length === 8)
+                      return messageApi.error("Array is Full!")
                     setArr((prev) => [
                       ...prev,
                       deleteValue ?? Math.floor(Math.random() * 100),
@@ -87,6 +91,8 @@ const ArrayPage = () => {
                   type="primary"
                   className="button"
                   onClick={() => {
+                    if (arr.length === 8)
+                      return messageApi.error("Array is Full!")
                     setArr((prev) => [
                       insertValue ?? Math.floor(Math.random() * 100),
                       ...prev,
@@ -102,7 +108,11 @@ const ArrayPage = () => {
               <Button
                 type="primary"
                 className="button"
-                onClick={() => setArr((prev) => prev.slice(0, prev.length - 1))}
+                onClick={() => {
+                  if (arr.length === 0)
+                    return messageApi.error("Array is Empty!")
+                  setArr((prev) => prev.slice(0, prev.length - 1))
+                }}
               >
                 Delete at End
               </Button>
@@ -111,7 +121,11 @@ const ArrayPage = () => {
               <Button
                 type="primary"
                 className="button"
-                onClick={() => setArr((prev) => prev.slice(1, prev.length))}
+                onClick={() => {
+                  if (arr.length === 0)
+                    return messageApi.error("Array is Empty!")
+                  setArr((prev) => prev.slice(1, prev.length))
+                }}
               >
                 Delete at Start
               </Button>
