@@ -214,7 +214,7 @@ const SortAlgorithmsPage = () => {
 
   useEffect(() => {
     generateRandomArray()
-  }, [])
+  }, [algorithm, arraySize])
 
   const continueSort = () => run(trace.slice(traceStep))
 
