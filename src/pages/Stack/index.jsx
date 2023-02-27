@@ -116,7 +116,7 @@ const StackPage = () => {
                 onClick={() => {
                   setIsEmpty(null)
                   setIsFull(null)
-                  setPeek(stack[0])
+                  setPeek(stack[stack.length - 1])
                 }}
               >
                 Peek

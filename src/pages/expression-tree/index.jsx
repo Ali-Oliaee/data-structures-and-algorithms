@@ -1,5 +1,9 @@
 import { Button, Input } from "antd"
 import MainLayout from "@layouts"
+<<<<<<< HEAD
+=======
+import codes from "@utils/code/array"
+>>>>>>> 167ea68 (improve expression tree)
 import { CodeWrapper } from "@/components"
 import "./styles.scss"
 
@@ -199,7 +203,11 @@ const EXTPage = () => {
           </Button>
         </Input.Group>
         <div id="Tree" />
+<<<<<<< HEAD
         {/* <CodeWrapper data={codes} /> */}
+=======
+        <CodeWrapper data={codes} />
+>>>>>>> 167ea68 (improve expression tree)
       </div>
     </MainLayout>
   )
