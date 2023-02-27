@@ -1,4 +1,6 @@
 import { newTrace, addToTrace, createKey } from "./helpers"
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight"
+import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 const InsertionSort = (numbers) => {
   const trace = newTrace(numbers)
@@ -29,7 +31,6 @@ export const InsertionSortKey = createKey(
   "Overwrite from memory"
 )
 export const InsertionSortDesc = {
-  title: "Insertion Sort",
   description: (
     <p>
       <a
@@ -60,7 +61,24 @@ export const InsertionSortDesc = {
     </span>
   ),
   bestCase: <span>O(n)</span>,
-  space: <span>O(1)</span>,
 }
+
+export const InsertionSortCode = (
+  <SyntaxHighlighter language="cpp" style={tomorrow}>{`
+  void InsertionSort(int * arr, int n){
+      int arr[6], i, elem;
+      cout<<"Enter 5 Array Elements: ";
+      for(i=0; i<5; i++)
+          cin>>arr[i];
+      cout<<"Enter Element to Insert: ";
+      cin>>elem;
+      arr[i] = elem;
+      cout<<"The New Array is:";
+      for(i=0; i<6; i++)
+          cout<<arr[i]<<"  ";
+      cout<<endl;
+      return 0;
+  }`}</SyntaxHighlighter>
+)
 
 export default InsertionSort

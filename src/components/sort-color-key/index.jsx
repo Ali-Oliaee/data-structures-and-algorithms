@@ -1,3 +1,4 @@
+import { Row } from "antd"
 import "./styles.scss"
 
 const SortColorKey = ({ groupA, groupB, groupC, groupD }) => {
@@ -43,13 +44,13 @@ const SortColorKey = ({ groupA, groupB, groupC, groupD }) => {
   )
 
   return (
-    <div className="sort-color-key">
+    <Row className="sort-color-key">
       {keySorted}
       {keyA}
       {keyB}
       {keyC}
       {keyD}
-    </div>
+    </Row>
   )
 }
 

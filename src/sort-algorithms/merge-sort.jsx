@@ -1,4 +1,6 @@
 import { newTrace, addToTrace, createKey } from "./helpers"
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight"
+import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 const MergeSort = (numbers) => {
   const trace = newTrace(numbers)
@@ -82,7 +84,6 @@ export const MergeSortKey = createKey(
   "Overwrite from axillary array"
 )
 export const MergeSortDesc = {
-  title: "Merge Sort",
   description: (
     <div>
       <p>
@@ -110,23 +111,37 @@ export const MergeSortDesc = {
   ),
   worstCase: (
     <span>
-      O(<em>n</em> log <em>n</em>)
+      O(<em>n</em>log <em>n</em>)
     </span>
   ),
   avgCase: (
     <span>
-      O(<em>n</em> log <em>n</em>)
+      O(<em>n</em>log <em>n</em>)
     </span>
   ),
   bestCase: (
     <span>
-      O(<em>n</em> log <em>n</em>)
-    </span>
-  ),
-  space: (
-    <span>
-      O(<em>n</em>)
+      O(<em>n</em>log <em>n</em>)
     </span>
   ),
 }
+
+export const MergeSortCode = (
+  <SyntaxHighlighter language="cpp" style={tomorrow}>{`
+  void mergeSort(int * arr, int n){
+      int arr[6], i, elem;
+      cout<<"Enter 5 Array Elements: ";
+      for(i=0; i<5; i++)
+          cin>>arr[i];
+      cout<<"Enter Element to Insert: ";
+      cin>>elem;
+      arr[i] = elem;
+      cout<<"The New Array is:";
+      for(i=0; i<6; i++)
+          cout<<arr[i]<<"  ";
+      cout<<endl;
+      return 0;
+  }`}</SyntaxHighlighter>
+)
+
 export default MergeSort
