@@ -8,6 +8,8 @@ const HomePage = () => {
       <br />
       <Link to="/data-structures-qiet/stack">Stack</Link>
       <br />
+      <Link to="/data-structures-qiet/queue">Queue</Link>
+      <br />
       <Link to="/data-structures-qiet/bst">BST</Link>
       <br />
       <Link to="/data-structures-qiet/ext">EXT</Link>

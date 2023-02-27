@@ -5,6 +5,7 @@ import {
   ArrayPage,
   StackPage,
   EXTPage,
+  QueuePage,
   ExpressionConvertorPage,
 } from "../pages"
 
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/data-structures-qiet/array",
     element: <ArrayPage />,
+  },
+  {
+    path: "/data-structures-qiet/queue",
+    element: <QueuePage />,
   },
   {
     path: "/data-structures-qiet/bst",
