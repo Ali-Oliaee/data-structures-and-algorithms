@@ -199,6 +199,7 @@ const SortAlgorithmsPage = () => {
     const array = Array.from({ length: arraySize }, () => getRandomInt(100))
 
     setArray(array)
+    reset(array)
     setTrace([])
     createTrace()
   }
@@ -207,7 +208,7 @@ const SortAlgorithmsPage = () => {
 
   useEffect(() => {
     generateRandomArray()
-  }, [])
+  }, [algorithm, arraySize])
 
   const continueSort = () => run(trace.slice(traceStep))
 
