@@ -1,9 +1,9 @@
 import React from "react"
 import { Button, Input } from "antd"
-import MainLayout from "../../layout"
-import infixImage from "../../assets/infix-expression.png"
-import postfixImage from "../../assets/postfix-expression.png"
-import prefixImage from "../../assets/prefix-expression.png"
+import MainLayout from "@layouts"
+import postfixImage from "@assets/postfix-expression.png"
+import prefixImage from "@assets/prefix-expression.png"
+import infixImage from "@assets/infix-expression.png"
 import { Image } from "antd"
 
 const ExpressionConvertorPage = () => {

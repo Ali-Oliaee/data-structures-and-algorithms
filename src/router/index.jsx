@@ -9,7 +9,7 @@ import {
   ExpressionConvertorPage,
   MinHeapPage,
   MaxHeapPage,
-} from "../pages"
+} from "@pages"
 
 const router = createBrowserRouter([
   {

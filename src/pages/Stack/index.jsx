@@ -1,6 +1,6 @@
 import { Button, Collapse } from "antd"
 import React from "react"
-import MainLayout from "../../layout"
+import MainLayout from "@layouts"
 import Codes from "./codes"
 import "./styles.scss"
 

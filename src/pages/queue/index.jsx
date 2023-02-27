@@ -1,5 +1,5 @@
 import { useState } from "react"
-import MainLayout from "../../layout"
+import MainLayout from "@layouts"
 import { Button, Collapse } from "antd"
 import Codes from "./codes"
 import "./styles.scss"
