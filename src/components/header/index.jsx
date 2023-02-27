@@ -1,8 +1,7 @@
-import React from "react"
-import { Button, Layout, Menu } from "antd"
+import { Layout } from "antd"
 import { GithubFilled } from "@ant-design/icons"
-import "./styles.scss"
 import { Link } from "react-router-dom"
+import "./styles.scss"
 
 const Header = () => {
   const { Header } = Layout

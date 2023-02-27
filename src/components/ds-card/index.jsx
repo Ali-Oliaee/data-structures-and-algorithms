@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./styles.scss"
 
-const DatastructureCard = ({ image, title, description, link }) => {
+const DataStructureCard = ({ image, title, description, link }) => {
   return (
     <div className="ds-card">
       <Link to={link}>
@@ -18,4 +18,4 @@ const DatastructureCard = ({ image, title, description, link }) => {
   )
 }
 
-export default DatastructureCard
+export default DataStructureCard
