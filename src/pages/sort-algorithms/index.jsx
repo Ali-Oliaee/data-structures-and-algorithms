@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { SortColorKey, SortDescription, SortPreview } from "@/components"
 import MainLayout from "@/layouts"
-import { Button, Progress, Row, Select } from "antd"
+import { Button, Progress, Row, Select, message } from "antd"
 import sortAlgorithms from "@/utils/sort-algorithms"
 import arrayLength from "@/utils/array-length"
 import BubbleSort, {
@@ -98,7 +98,7 @@ const SortAlgorithmsPage = () => {
     "Heap Sort": HeapSortCode,
     "Shell Sort": ShellSortCode,
   }
-
+  const [messageApi, contextHolder] = message.useMessage()
   const [trace, setTrace] = useState([])
   const [traceStep, setTraceStep] = useState(-1)
   const [firstRun, setFirstRun] = useState(true)
@@ -135,7 +135,7 @@ const SortAlgorithmsPage = () => {
       clearTimeouts()
       setTrace(trace)
     }
-  }, [array, trace, arraySize])
+  }, [array, trace, arraySize, algorithm])
 
   const reset = (array) => {
     setArray(array)
@@ -219,6 +219,10 @@ const SortAlgorithmsPage = () => {
   const continueSort = () => run(trace.slice(traceStep))
 
   const stepForward = () => {
+    if (firstRun)
+      return messageApi.info(
+        "Welcome to the Sorting Visualizer! Please select a sorting algorithm to begin."
+      )
     if (traceStep < trace.length - 1) {
       const item = trace[traceStep + 1]
       setTraceStep(traceStep + 1)
@@ -227,6 +231,10 @@ const SortAlgorithmsPage = () => {
   }
 
   const stepBackward = () => {
+    if (firstRun)
+      return messageApi.info(
+        "Welcome to the Sorting Visualizer! Please select a sorting algorithm to begin."
+      )
     if (traceStep > 0) {
       const item = trace[traceStep - 1]
       setTraceStep(traceStep - 1)
@@ -244,12 +252,14 @@ const SortAlgorithmsPage = () => {
 
   return (
     <MainLayout>
+      {contextHolder}
       <Row justify="end">
         <Select
           options={sortAlgorithms}
           placeholder="Sort Algorithm"
           onChange={(value) => {
             setAlgorithm(value)
+            setFirstRun(false)
             generateRandomArray()
           }}
           bordered={false}
