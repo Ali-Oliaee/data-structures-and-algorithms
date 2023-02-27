@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom"
 import {
-  BST,
+  BSTPage,
   HomePage,
   ArrayPage,
   StackPage,
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/data-structures-qiet/bst",
-    element: <BST />,
+    element: <BSTPage />,
   },
   {
     path: "/data-structures-qiet/stack",
