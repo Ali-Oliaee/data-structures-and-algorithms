@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react"
-import {
-  SortColorKey,
-  SortControls,
-  SortDescription,
-  SortPreview,
-} from "@/components"
+import { SortColorKey, SortDescription, SortPreview } from "@/components"
 import MainLayout from "@/layouts"
 import { Button, Progress, Row, Select } from "antd"
 import sortAlgorithms from "@/utils/sort-algorithms"
@@ -44,6 +39,12 @@ import ShellSort, {
 import "./styles.scss"
 import sortSpeeds from "@/utils/sort-speeds"
 import { useRef } from "react"
+import {
+  PauseOutlined,
+  PlayCircleOutlined,
+  StepBackwardOutlined,
+  StepForwardOutlined,
+} from "@ant-design/icons"
 
 const SortAlgorithmsPage = () => {
   const ALGORITHM = {
@@ -159,6 +160,7 @@ const SortAlgorithmsPage = () => {
         i * timer,
         item
       )
+      setTraceStep(traceStep + 1)
       timeoutIds.push(timeoutId)
     })
 
@@ -253,11 +255,37 @@ const SortAlgorithmsPage = () => {
       />
 
       <Progress
-        percent={trace.length > 0 ? (traceStep / (trace.length - 1)) * 100 : 0}
+        percent={traceStep > 0 ? (traceStep / (trace.length - 1)) * 100 : 0}
         showInfo={false}
       />
 
-      <SortControls
+      <div className="sort-controls-container">
+        <Button
+          icon={<StepBackwardOutlined />}
+          onClick={stepBackward}
+          // disabled={isDisabled(onBackward, backwardDisabled)}
+        />
+
+        <Button
+          icon={
+            timeoutIds.length > 0 ? <PauseOutlined /> : <PlayCircleOutlined />
+          }
+          type="primary"
+          onClick={() => (timeoutIds.length > 0 ? pause() : run(trace))}
+          // disabled={
+          //   playing
+          //     ? isDisabled(onPause, pauseDisabled)
+          //     : isDisabled(onPlay, playDisabled)
+          // }
+        />
+
+        <Button
+          icon={<StepForwardOutlined />}
+          onClick={stepForward}
+          // disabled={isDisabled(onForward, forwardDisabled)}
+        />
+      </div>
+      {/* <SortControls
         // onPlay={() => {
         //   traceStep === -1 ? run(trace) : continueSort()
         // }}
@@ -274,10 +302,8 @@ const SortAlgorithmsPage = () => {
         // forwardDisabled={this.state.traceStep >= this.state.trace.length - 1}
         // backwardDisabled={this.state.traceStep <= 0}
         playbackSpeed={playbackSpeed}
-      />
-
+      /> */}
       <SortColorKey {...ALGORITHM_KEY[algorithm]} />
-
       <SortDescription {...ALGORITHM_DESC[algorithm]} />
     </MainLayout>
   )
