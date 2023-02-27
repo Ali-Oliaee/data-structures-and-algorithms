@@ -107,6 +107,16 @@ const HomePage = () => {
           link="/data-structures-qiet/max-heap"
         />
       </div>
+      <h3 className="copyright-link">
+        Made by{" "}
+        <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">
+          Vite
+        </a>{" "}
+        and{" "}
+        <a href="https://ant.design/" target="_blank" rel="noopener noreferrer">
+          Ant Design
+        </a>
+      </h3>
     </div>
   )
 }
