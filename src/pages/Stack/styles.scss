@@ -1,0 +1,122 @@
+.stack-page{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    .stack-descriptions {
+        margin-top: 10px;
+        width: calc(100% - 200px);
+        margin-inline-end: 30px;
+
+        .codes-container {
+            margin-top: 30px;
+            width: 100%;
+
+            .codes {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1em;
+
+                .code {
+                    width: 100%;
+                }
+            }
+            .code-title {
+                font-size: 1.2em;
+                margin-block: .8em;
+                border-top: 1px solid #dedede;
+                padding-top: 10px;
+            }
+        }
+    }
+
+    .stack  {
+
+
+        .stack-container {
+            background-color: #dede;
+            max-width: 100px;
+            text-align: center;
+            border: 1px solid #000;
+            border-top: 0;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+
+            .stack-size {
+                position: absolute;
+                bottom: -18px;
+
+            }
+
+
+            .stack-item { 
+                border: 1px solid #000;
+                padding: 10px 14px;
+                font-size: 1.3em;
+                user-select: none;
+                width: 100%;
+            }
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 1em 0;
+            width: 100%;
+            max-width: 100px;
+
+
+            .button-container {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+
+                h4 {
+                    margin-inline-start: 10px;
+                }
+            }
+
+            .button {
+                margin: 0.5em 0;
+                width: 100%;
+                min-width: 100px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+
+        .stack-descriptions {
+            width: 100%;
+            margin-inline-end: 0;
+        }
+
+        .stack {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            width: 100%;
+
+            .stack-container {
+                min-width: 80px;
+
+                .stack-size {
+                    bottom: -38px;
+                }
+            }
+        }
+        
+    }
+}
