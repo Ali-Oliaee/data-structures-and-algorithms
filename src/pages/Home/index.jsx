@@ -39,7 +39,7 @@ const HomePage = () => {
           particular order. Sorting algorithms are used to arrange data in a
           particular format."
           image={sort}
-          link="/data-structures-and-algorithms/sort"
+          link="/sort"
         />
         <DataStructureCard
           title="Array"
@@ -47,14 +47,14 @@ const HomePage = () => {
           contiguous memory locations that can be individually referenced by
           using an index to a unique identifier."
           image={array}
-          link="/data-structures-and-algorithms/array"
+          link="/array"
         />
         <DataStructureCard
           title="Stack"
           description="Stacks in Data Structures is a linear type of data structure that
             follows the LIFO (Last-In-First-Out)"
           image={stack}
-          link="/data-structures-and-algorithms/stack"
+          link="/stack"
         />
 
         <DataStructureCard
@@ -63,7 +63,7 @@ const HomePage = () => {
           which the operations are performed. The order is First In First Out
           (FIFO)."
           image={queue}
-          link="/data-structures-and-algorithms/queue"
+          link="/queue"
         />
 
         <DataStructureCard
@@ -73,14 +73,14 @@ const HomePage = () => {
           in that node's left subtree and less than or equal to those in its
           right subtree."
           image={bst}
-          link="/data-structures-and-algorithms/bst"
+          link="/bst"
         />
         <DataStructureCard
           title="Expressions"
           description="An expression is a combination of one or more constants, variables,
           operators, and the function calls that evaluates to a single value."
           image={postfix}
-          link="/data-structures-and-algorithms/expressions"
+          link="/expressions"
         />
         <DataStructureCard
           title="Expression Tree"
@@ -88,7 +88,7 @@ const HomePage = () => {
           corresponds to an operator and each leaf node corresponds to an
           operand."
           image={ext}
-          link="/data-structures-and-algorithms/ext"
+          link="/ext"
         />
         <DataStructureCard
           title="Min Heap"
@@ -96,7 +96,7 @@ const HomePage = () => {
           internal node is smaller than or equal to the values in the children
           of that node."
           image={minHeap}
-          link="/data-structures-and-algorithms/min-heap"
+          link="/min-heap"
         />
         <DataStructureCard
           title="Max Heap"
@@ -104,7 +104,7 @@ const HomePage = () => {
           internal node is greater than or equal to the values in the children
           of that node."
           image={maxHeap}
-          link="/data-structures-and-algorithms/max-heap"
+          link="/max-heap"
         />
       </div>
       <h3 className="copyright-link">

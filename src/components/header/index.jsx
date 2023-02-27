@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <Header className="header">
-      <Link to="/data-structures-and-algorithms/" className="home-link">
+      <Link to="/" className="home-link">
         Home
       </Link>
       <div className="links">
