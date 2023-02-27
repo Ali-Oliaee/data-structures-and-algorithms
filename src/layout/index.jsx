@@ -5,8 +5,9 @@ import {
   UserOutlined,
 } from "@ant-design/icons"
 import { Layout, Menu, theme } from "antd"
+import { Header } from "../components"
 
-const { Header, Content, Sider } = Layout
+const { Content, Sider } = Layout
 
 const items1 = ["1", "2", "3"].map((key) => ({
   key,
@@ -36,15 +37,7 @@ const MainLayout = ({ sidebar, children }) => {
   } = theme.useToken()
   return (
     <Layout>
-      <Header className="header">
-        <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={items1}
-        />
-      </Header>
+      <Header />
       <Layout>
         <Sider
           style={{
