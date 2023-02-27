@@ -4,7 +4,7 @@ import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/hljs"
 import { Segmented } from "antd"
 
 const Codes = () => {
-  const [code, setCode] = React.useState("insert")
+  const [code, setCode] = React.useState("Insert")
   return (
     <>
       <Segmented
