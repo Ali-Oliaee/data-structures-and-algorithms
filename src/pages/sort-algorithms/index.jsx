@@ -216,10 +216,7 @@ const SortAlgorithmsPage = () => {
     generateRandomArray()
   }, [])
 
-  const continueSort = () => {
-    const trace = trace.slice(traceStep)
-    run(trace)
-  }
+  const continueSort = () => run(trace.slice(traceStep))
 
   const stepForward = () => {
     if (traceStep < trace.length - 1) {
@@ -305,7 +302,13 @@ const SortAlgorithmsPage = () => {
           icon={
             timeoutIds.length > 0 ? <PauseOutlined /> : <PlayCircleOutlined />
           }
-          onClick={() => (timeoutIds.length > 0 ? pause() : run(trace))}
+          onClick={() =>
+            timeoutIds.length > 0
+              ? pause()
+              : traceStep === -1
+              ? run(trace)
+              : continueSort()
+          }
         />
         <Button
           size="large"
