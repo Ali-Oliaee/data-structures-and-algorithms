@@ -7,31 +7,15 @@ import "./styles.scss"
 
 const ArrayPage = () => {
   const [arr, setArr] = useState([1, 2, 3, 4, 5])
-  const [index, setIndex] = useState(null)
-  const [value, setValue] = useState(null)
+  const [insertValue, setInsertValue] = useState(null)
+  const [deleteValue, setDeleteValue] = useState(null)
 
   const createRandomArray = () => {
     setArr([])
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 8; i++) {
       let random = Math.floor(Math.random() * 100)
       setArr((prev) => [...prev, random])
     }
-  }
-
-  const insertAfterIndex = () => {
-    if (index === null || value === null) {
-      alert("Please enter index and value")
-      return
-    }
-    if (index >= arr.length || index < 0) {
-      alert("Index out of range")
-      return
-    }
-    setArr((prev) => [
-      ...arr.slice(0, Number(index) + 1),
-      Number(value),
-      ...prev.slice(Number(index) + 1),
-    ])
   }
 
   return (
@@ -69,15 +53,22 @@ const ArrayPage = () => {
             <div className="option">
               <Input.Group compact>
                 <Input
+                  value={deleteValue}
                   type="number"
                   placeholder="value"
                   className="input"
-                  onChange={(text) => setValue(text.target.value)}
+                  onChange={(text) => setDeleteValue(text.target.value)}
                 />
                 <Button
                   type="primary"
                   className="button"
-                  onClick={() => setArr((prev) => [...prev, value])}
+                  onClick={() => {
+                    setArr((prev) => [
+                      ...prev,
+                      deleteValue ?? Math.floor(Math.random() * 100),
+                    ])
+                    setDeleteValue(null)
+                  }}
                 >
                   Insert at End
                 </Button>
@@ -89,37 +80,21 @@ const ArrayPage = () => {
                   type="number"
                   className="input"
                   placeholder="value"
-                  onChange={(text) => setValue(text.target.value)}
+                  value={insertValue}
+                  onChange={(text) => setInsertValue(text.target.value)}
                 />
                 <Button
                   type="primary"
                   className="button"
-                  onClick={() => setArr((prev) => [value, ...prev])}
+                  onClick={() => {
+                    setArr((prev) => [
+                      insertValue ?? Math.floor(Math.random() * 100),
+                      ...prev,
+                    ])
+                    setInsertValue(null)
+                  }}
                 >
                   Insert at Start
-                </Button>
-              </Input.Group>
-            </div>
-            <div className="option">
-              <Input.Group compact>
-                <Input
-                  type="number"
-                  className="input"
-                  placeholder="index"
-                  onChange={(text) => setIndex(text.target.value)}
-                />
-                <Input
-                  type="number"
-                  className="input"
-                  placeholder="value"
-                  onChange={(text) => setValue(text.target.value)}
-                />
-                <Button
-                  type="primary"
-                  className="button"
-                  onClick={insertAfterIndex}
-                >
-                  Insert After Index
                 </Button>
               </Input.Group>
             </div>
