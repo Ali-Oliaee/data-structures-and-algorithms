@@ -24,7 +24,7 @@ export default [
                       r = r->Rchild;
                   else
                   {
-                      std::cout << "The "<< data << " is duplicate !!\n";
+                      std::cout << "The "<< data << " is duplicate !!";
                       return false;
                   }
               }
@@ -199,7 +199,7 @@ export default [
                   return false;
               if(!search(key))
               {
-                  std::cout << " There is no such value to be deleted !!\n";
+                  std::cout << " There is no such value to be deleted !!";
                   return false;
               }
   

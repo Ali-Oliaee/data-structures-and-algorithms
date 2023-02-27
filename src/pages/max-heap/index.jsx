@@ -10,15 +10,21 @@ import {
   ZoomOutOutlined,
 } from "@ant-design/icons"
 import { useState } from "react"
+import { Input } from "antd"
+import { message } from "antd"
 
 const MaxHeapPage = () => {
+  const [messageApi, contextHolder] = message.useMessage()
   const { Panel } = Collapse
-  const { ref, insert, remove, clear, generateRandomTree } = useHeap()
+  const { ref, insert, remove, clear, generateRandomTree, getData } = useHeap()
   const [scale, setScale] = useState(1)
+  const [insertValue, setInsertValue] = useState(null)
+  const [removeValue, setRemoveValue] = useState(null)
   const [fullscreen, setFullscreen] = useState(false)
 
   return (
     <MainLayout>
+      {contextHolder}
       <div className="max-heap-page">
         <div className="description-container">
           <h1>Max Heap page</h1>
@@ -70,19 +76,62 @@ const MaxHeapPage = () => {
             <MaxHeap data={[2, 1, 3]} ref={ref} />
           </div>
           <div className="buttons-container">
+            <Input.Group compact>
+              <Input
+                type="number"
+                placeholder="Insert"
+                value={insertValue}
+                onChange={(e) => {
+                  if (e.target.value) setInsertValue(Number(e.target.value))
+                  else setInsertValue(null)
+                }}
+              />
+              <Button
+                type="primary"
+                onClick={() => {
+                  insert(insertValue ?? Math.floor(Math.random() * 100))
+                  setInsertValue(null)
+                }}
+              >
+                Insert
+              </Button>
+            </Input.Group>
+            <Input.Group compact>
+              <Input
+                type="number"
+                placeholder="Remove"
+                value={removeValue}
+                onChange={(e) => {
+                  if (e.target.value) setRemoveValue(Number(e.target.value))
+                  else setRemoveValue(null)
+                }}
+              />
+              <Button
+                type="primary"
+                onClick={() => {
+                  const heapArray = getData()
+                  if (removeValue) {
+                    if (heapArray.includes(removeValue)) {
+                      remove(removeValue)
+                      messageApi.success("Value removed successfully")
+                    } else messageApi.error("Value not found")
+                  } else messageApi.error("Enter a value to remove")
+
+                  setRemoveValue(null)
+                }}
+              >
+                Remove
+              </Button>
+            </Input.Group>
             <Button
+              className="clear-button"
               type="primary"
-              onClick={() => insert(Math.floor(Math.random() * 100))}
+              onClick={() => clear()}
             >
-              Insert
-            </Button>
-            <Button type="primary" onClick={() => remove(3)}>
-              Remove
-            </Button>
-            <Button type="primary" onClick={() => clear()}>
               Clear
             </Button>
             <Button
+              className="random-button"
               type="primary"
               onClick={() =>
                 generateRandomTree(Math.floor(Math.random() * 10) + 1)

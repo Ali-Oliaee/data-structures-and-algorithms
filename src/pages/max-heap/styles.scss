@@ -50,10 +50,20 @@
             justify-content: center;
             margin-top: 40px;
             flex-wrap: wrap;
-
-            button {
-                margin: 4px;
-                min-width: 100px;
+            
+            .ant-input-group {
+                display: inline-block;
+                min-width: 140px;
+                width: auto;
+                text-align: center;
+                margin: 10px ;
+            }
+            .clear-button, .random-button {
+                margin: 10px;
+                width: 140px;
+            }
+            input {
+                width: 80px;
             }
         }
     }

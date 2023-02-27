@@ -1,37 +1,37 @@
-import { Button, Collapse } from "antd"
-import React from "react"
+import { useState } from "react"
+import { Button, message } from "antd"
+import { CodeWrapper } from "@/components"
 import MainLayout from "@layouts"
-import Codes from "./codes"
+import codes from "@utils/code/array"
 import "./styles.scss"
 
 const StackPage = () => {
-  const { Panel } = Collapse
-  const [stack, setStack] = React.useState([2, 3])
-  const [isEmpty, setIsEmpty] = React.useState("")
-  const [isFull, setIsFull] = React.useState("")
-  const [peek, setPeek] = React.useState(null)
+  const [messageApi, contextHolder] = message.useMessage()
+  const [stack, setStack] = useState([2, 3])
+  const [isEmpty, setIsEmpty] = useState(null)
+  const [isFull, setIsFull] = useState(null)
+  const [peek, setPeek] = useState(null)
 
   const pop = () => {
-    setIsEmpty("")
-    setIsFull("")
+    if (stack.length === 0) return messageApi.error("Stack is empty")
+    setIsEmpty(null)
+    setIsFull(null)
     setPeek(null)
-    const newStack = [...stack]
-    newStack.shift()
-    setStack(newStack)
+    setStack(stack.slice(0, stack.length - 1))
   }
 
   const push = () => {
-    setIsEmpty("")
-    setIsFull("")
+    if (stack.length === 5) return messageApi.error("Stack is full")
+    setIsEmpty(null)
+    setIsFull(null)
     setPeek(null)
-    const newStack = [...stack]
     const random = Math.floor(Math.random() * 100)
-    if (stack.length < 5) newStack.unshift(random)
-    setStack(newStack)
+    setStack([...stack, random])
   }
 
   return (
     <MainLayout>
+      {contextHolder}
       <h1 className="title">Stack</h1>
       <div className="stack-page">
         <div className="stack-descriptions">
@@ -43,15 +43,11 @@ const StackPage = () => {
             memory which is an array, and non-contiguous memory which is a
             linked list. Stack plays a vital role in many applications.
           </p>
-          <Collapse className="codes-container">
-            <Panel header="Codes">
-              <Codes />
-            </Panel>
-          </Collapse>
+          <CodeWrapper data={codes} />
         </div>
         <div className="stack">
           <div className="stack-container">
-            {stack.reverse().map((item, index) => (
+            {stack.map((item, index) => (
               <div className="stack-item" key={index}>
                 {item}
               </div>
@@ -70,37 +66,37 @@ const StackPage = () => {
                 className="button"
                 type="primary"
                 onClick={() => {
-                  setIsFull("")
+                  setIsFull(null)
                   setPeek(null)
-                  setIsEmpty(stack.length === 0 ? "true" : "false")
+                  setIsEmpty(stack.length === 0 ? true : false)
                 }}
               >
                 isEmpty
               </Button>
-              <h4>{isEmpty}</h4>
+              <h4>{isEmpty !== null && String(isEmpty)}</h4>
             </div>
             <div className="button-container">
               <Button
                 className="button"
                 type="primary"
                 onClick={() => {
-                  setIsEmpty("")
+                  setIsEmpty(null)
                   setPeek(null)
-                  setIsFull(stack.length === 5 ? "true" : "false")
+                  setIsFull(stack.length === 5 ? true : false)
                 }}
               >
                 IsFull
               </Button>
-              <h4>{isFull}</h4>
+              <h4>{isFull !== null && String(isFull)}</h4>
             </div>
             <div className="button-container">
               <Button
                 className="button"
                 type="primary"
                 onClick={() => {
-                  setIsEmpty("")
-                  setIsFull("")
-                  setPeek(stack.length > 0 && stack[0])
+                  setIsEmpty(null)
+                  setIsFull(null)
+                  setPeek(stack[0])
                 }}
               >
                 Peek

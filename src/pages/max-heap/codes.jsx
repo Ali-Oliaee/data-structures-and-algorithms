@@ -10,110 +10,83 @@ const Codes = () => {
       <Segmented
         size="large"
         type="primary"
-        options={["Insert", "Remove", "Search"]}
+        options={["Insert", "Delete"]}
         onChange={(e) => setCode(e)}
       />
       {code === "Insert" && (
         <>
           <h1 className="code-title">Insert</h1>
           <SyntaxHighlighter language="cpp" style={tomorrow}>
-            {`#include<iostream>
-          using namespace std;
-          int main()
-          {
-              int arr[6], i, elem;
-              cout<<"Enter 5 Array Elements: ";
-              for(i=0; i<5; i++)
-                  cin>>arr[i];
-              cout<<"\nEnter Element to Insert: ";
-              cin>>elem;
-              arr[i] = elem;
-              cout<<"\nThe New Array is:\n";
-              for(i=0; i<6; i++)
-                  cout<<arr[i]<<"  ";
-              cout<<endl;
-              return 0;
-          }`}
-          </SyntaxHighlighter>
-        </>
-      )}
-      {code === "Remove" && (
-        <>
-          <h1 className="code-title">Remove</h1>
-          <SyntaxHighlighter language="cpp" style={tomorrow}>
-            {`#include<iostream>
-using namespace std;
-int main()
+            {`void heapify(int arr[], int n, int i)
 {
-    int arr[10], tot=10, i, elem, j, found=0;
-    cout<<"Enter 10 Array Elements: ";
-    for(i=0; i<tot; i++)
-        cin>>arr[i];
-    cout<<"\nEnter Element to Delete: ";
-    cin>>elem;
-    for(i=0; i<tot; i++)
-    {
-        if(arr[i]==elem)
-        {
-            for(j=i; j<(tot-1); j++)
-                arr[j] = arr[j+1];
-            found++;
-            i--;
-            tot--;
+    // Find parent
+    int parent = (i - 1) / 2;
+ 
+    if (arr[parent] > 0) {
+        if (arr[i] > arr[parent]) {
+            swap(arr[i], arr[parent]);
+ 
+            // Recursively heapify the parent node
+            heapify(arr, n, parent);
         }
     }
-    if(found==0)
-        cout<<"\nElement doesn't found in the Array!";
-    else
-        cout<<"\nElement Deleted Successfully!";
-    cout<<endl;
-    return 0;
+}
+ 
+void insertNode(int arr[], int& n, int Key)
+{
+    // Increase the size of Heap by 1
+    n = n + 1;
+ 
+    // Insert the element at end of Heap
+    arr[n - 1] = Key;
+ 
+    // Heapify the new node following a
+    // Bottom-up approach
+    heapify(arr, n, n - 1);
 }`}
           </SyntaxHighlighter>
         </>
       )}
-      {code === "Search" && (
+      {code === "Delete" && (
         <>
-          <h1 className="code-title">Search</h1>
+          <h1 className="code-title">Delete</h1>
           <SyntaxHighlighter language="cpp" style={tomorrow}>
-            {`#include<iostream>    
-using namespace std;    
-    void print(int a[], int n) //function to print array elements  
-    {  
-    int i;  
-    for(i = 0; i < n; i++)    
-    {    
-       cout<<a[i]<<" ";     
-    }        
-    }  
- void bubble(int a[], int n) // function to implement bubble sort  
- {  
- int i, j, temp;  
-   for(i = 0; i < n; i++)    
-    {    
-      for(j = i+1; j < n; j++)    
-        {    
-            if(a[j] < a[i])    
-            {    
-                temp = a[i];    
-                a[i] = a[j];    
-                a[j] = temp;     
-            }     
-        }     
-    }     
-    
- }  
-int main()    
-{    
-    int i, j,temp;     
-    int a[5] = {45, 1, 32, 13, 26};     
-    int n = sizeof(a)/sizeof(a[0]);   
-    cout<<"Before sorting array elements are - \n";  
-    print(a, n);  
-    bubble(a, n);  
-    cout<<"\nAfter sorting array elements are - \n";    
-    print(a, n);  
-return 0;  
+            {`void heapify(int arr[], int n, int i)
+{
+    int largest = i; // Initialize largest as root
+    int l = 2 * i + 1; // left = 2*i + 1
+    int r = 2 * i + 2; // right = 2*i + 2
+  
+    // If left child is larger than root
+    if (l < n && arr[l] > arr[largest])
+        largest = l;
+  
+    // If right child is larger than largest so far
+    if (r < n && arr[r] > arr[largest])
+        largest = r;
+  
+    // If largest is not root
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+  
+        // Recursively heapify the affected sub-tree
+        heapify(arr, n, largest);
+    }
+}
+
+void deleteRoot(int arr[], int& n)
+{
+    // Get the last element
+    int lastElement = arr[n - 1];
+
+    // Replace root with last element
+    arr[0] = lastElement;
+
+    // Decrease size of heap by 1
+    n = n - 1;
+
+    // heapify the root node
+    heapify(arr, n, 0);
 }`}
           </SyntaxHighlighter>
         </>
