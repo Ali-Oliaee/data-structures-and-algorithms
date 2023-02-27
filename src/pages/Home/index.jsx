@@ -16,6 +16,9 @@ const HomePage = () => {
       <br />
       <Link to="/data-structures-qiet/expressions">Expressions</Link>
       <br />
+      <Link to="/data-structures-qiet/min-heap">Min Heap</Link>
+      <br />
+      <Link to="/data-structures-qiet/max-heap">Max Heap</Link>
     </div>
   )
 }

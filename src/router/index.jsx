@@ -7,6 +7,8 @@ import {
   EXTPage,
   QueuePage,
   ExpressionConvertorPage,
+  MinHeapPage,
+  MaxHeapPage,
 } from "../pages"
 
 const router = createBrowserRouter([
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
   {
     path: "/data-structures-qiet/expressions",
     element: <ExpressionConvertorPage />,
+  },
+  {
+    path: "/data-structures-qiet/min-heap",
+    element: <MinHeapPage />,
+  },
+  {
+    path: "/data-structures-qiet/max-heap",
+    element: <MaxHeapPage />,
   },
 ])
 
