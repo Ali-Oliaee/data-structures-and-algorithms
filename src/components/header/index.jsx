@@ -1,24 +1,22 @@
 import React from "react"
-import { Layout, Menu } from "antd"
+import { Button, Layout, Menu } from "antd"
 import { GithubFilled } from "@ant-design/icons"
 import "./styles.scss"
+import { Link } from "react-router-dom"
 
 const Header = () => {
   const { Header } = Layout
 
-  const items1 = ["1", "2", "3"].map((key) => ({
-    key,
-    label: `nav ${key}`,
-  }))
-
   return (
     <Header className="header">
-      <Menu
-        theme="light"
-        mode="horizontal"
-        defaultSelectedKeys={["2"]}
-        items={items1}
-      />
+      <Link to="/data-structures-qiet/">Home</Link>
+      <a
+        target="_blank"
+        href="https://github.com/ali-oliaee/"
+        className="github-link"
+      >
+        <GithubFilled className="github-icon" />
+      </a>
     </Header>
   )
 }
