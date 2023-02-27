@@ -250,5 +250,69 @@ export default [
 		}`,
       },
     ],
+  },{
+    title: "Print Odd Nodes",
+    codes: [
+      {
+		subtitle: "Print Odd Nodes",
+		code:`
+		void BST::printOddNodes(Node *Root, bool isOdd = true)
+		{
+			// If empty tree
+		    if (Root == NULL)
+				return;
+			// If current node is of odd level
+			if (isOdd)
+				std::cout << Root->data << " " ;
+		    // Recur for children with isOdd switched.
+			printOddNodes(Root->Lchild, !isOdd);
+			printOddNodes(Root->Rchild, !isOdd);
+		}`,
+	  },
+    ],
   },
+  {
+    title: "Counting The Leaves",
+    codes: [
+      {
+		subtitle: "Counting The Leaves",
+		code:`
+		int BST::getLeafCount(Node* Root)
+		{
+			if(Root == NULL)
+				return 0;
+			if(Root->Lchild == NULL && Root->Rchild == NULL)
+				return 1;
+			else
+				return getLeafCount(Root->Lchild) + getLeafCount(Root->Rchild);
+		}`,
+	  },
+    ],
+  },
+  {
+    title: "Maximum Depth Of BST",
+    codes: [
+      {
+	    subtitle: "Maximum Depth Of BST",
+		code:`
+		int BST::maxDepth(Node* Root)
+		{
+			if (Root == NULL)
+				return 0;
+			else
+			{
+				/* compute the depth of each subtree */
+				int lDepth = maxDepth(Root->Lchild);
+				int rDepth = maxDepth(Root->Rchild);
+				/* use the larger one */
+				if (lDepth > rDepth)
+					return(lDepth + 1);
+				else 
+					return(rDepth + 1);
+			}
+		}`,
+	  },
+    ],
+  },
+			
 ]
