@@ -7,14 +7,23 @@ import "./styles.scss"
 const StackPage = () => {
   const { Panel } = Collapse
   const [stack, setStack] = React.useState([2, 3])
+  const [isEmpty, setIsEmpty] = React.useState("")
+  const [isFull, setIsFull] = React.useState("")
+  const [peek, setPeek] = React.useState(null)
 
   const pop = () => {
+    setIsEmpty("")
+    setIsFull("")
+    setPeek(null)
     const newStack = [...stack]
     newStack.shift()
     setStack(newStack)
   }
 
   const push = () => {
+    setIsEmpty("")
+    setIsFull("")
+    setPeek(null)
     const newStack = [...stack]
     const random = Math.floor(Math.random() * 100)
     if (stack.length < 5) newStack.unshift(random)
@@ -57,22 +66,46 @@ const StackPage = () => {
               Push
             </Button>
             <div className="button-container">
-              <Button className="button" type="primary">
-                IsEmpty
+              <Button
+                className="button"
+                type="primary"
+                onClick={() => {
+                  setIsFull("")
+                  setPeek(null)
+                  setIsEmpty(stack.length === 0 ? "true" : "false")
+                }}
+              >
+                isEmpty
               </Button>
-              <h4>{stack.length === 0 ? "true" : "false"}</h4>
+              <h4>{isEmpty}</h4>
             </div>
             <div className="button-container">
-              <Button className="button" type="primary">
+              <Button
+                className="button"
+                type="primary"
+                onClick={() => {
+                  setIsEmpty("")
+                  setPeek(null)
+                  setIsFull(stack.length === 5 ? "true" : "false")
+                }}
+              >
                 IsFull
               </Button>
-              <h4>{stack.length === 5 ? "true" : "false"}</h4>
+              <h4>{isFull}</h4>
             </div>
             <div className="button-container">
-              <Button className="button" type="primary">
+              <Button
+                className="button"
+                type="primary"
+                onClick={() => {
+                  setIsEmpty("")
+                  setIsFull("")
+                  setPeek(stack.length > 0 && stack[0])
+                }}
+              >
                 Peek
               </Button>
-              <h4>{stack.length > 0 && stack[0]}</h4>
+              <h4>{peek}</h4>
             </div>
           </div>
         </div>
