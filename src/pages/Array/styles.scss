@@ -107,29 +107,5 @@
                 }
             }
         }
-
-        .codes-container {
-            margin-top: 30px;
-            width: 100%;
-
-            .codes {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 1em;
-
-                .code {
-                    width: 100%;
-                }
-            }
-            .code-title {
-                font-size: 1.2em;
-                margin-block: .8em;
-                border-top: 1px solid #dedede;
-                padding-top: 10px;
-            }
-        }
     }
 }
