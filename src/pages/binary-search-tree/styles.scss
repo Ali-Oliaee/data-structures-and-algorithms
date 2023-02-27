@@ -1,0 +1,89 @@
+.bst-page {
+
+    .description-container {
+        max-width: 65%;
+        .description {
+            margin-block: 20px;
+        }
+    }
+
+    .fullscreen {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background: #fff;
+    }
+    .tree-container {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        justify-content: space-between;
+
+
+        .scale-container {
+            text-align: right;
+            z-index: 99;
+            position: absolute;
+            top: 0;
+            right: 0;
+
+        }
+
+        .tree {
+            min-width: 400px;
+            #react-tree-vis {
+                max-height: 400px;
+                min-height: 400px;
+                overflow: hidden;
+            }
+
+        }
+        .tree-traverse {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fullscreen-tree {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            #react-tree-vis {
+                max-height: 600px;
+                min-height: 600px;
+                overflow: hidden;
+            }
+        }
+
+        .buttons-container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            justify-content: center;
+            margin-top: 40px;
+            z-index: 99;
+            flex-wrap: wrap;
+            
+            .ant-input-group {
+                display: inline-block;
+                min-width: 140px;
+                width: auto;
+                text-align: center;
+                margin: 10px ;
+            }
+            .clear-button, .random-button {
+                margin: 10px;
+                width: 140px;
+            }
+            input {
+                width: 80px;
+            }
+        }
+    }
+}
