@@ -17,7 +17,7 @@ const StackPage = () => {
     setIsEmpty(null)
     setIsFull(null)
     setPeek(null)
-    setStack(stack.slice(0, stack.length - 1))
+    setStack(stack.slice(1, stack.length))
   }
 
   const push = () => {
@@ -26,7 +26,7 @@ const StackPage = () => {
     setIsFull(null)
     setPeek(null)
     const random = Math.floor(Math.random() * 100)
-    setStack([...stack, random])
+    setStack([random, ...stack])
   }
 
   return (
@@ -96,7 +96,7 @@ const StackPage = () => {
                 onClick={() => {
                   setIsEmpty(null)
                   setIsFull(null)
-                  setPeek(stack[stack.length - 1])
+                  setPeek(stack[0])
                 }}
               >
                 Peek
