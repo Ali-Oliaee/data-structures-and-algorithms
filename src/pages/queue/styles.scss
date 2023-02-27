@@ -6,11 +6,20 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin: 24px;
+        @media screen and (max-width: 600px) {
+            margin: 0;
+        }
 
+        .size-text {
+            margin-bottom: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
         .queue {
             display: flex;
-            margin: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            min-height: 124px;
 
             .queue-item {
                 display: flex;
@@ -19,18 +28,27 @@
                 border: 1px solid #000;
                 position: relative;
                 width: 36px;
-                height: 36px;
+                height: 100px;
+                margin: 8px;
 
+                @media screen and (max-width: 600px) {
+                    margin-inline: 0;
+                }
+                    
                 .queue-item-last, .queue-item-first {
                     position: absolute;
+                    font-weight: bold;
                     bottom: -20px ;
                     font-size: 0.9em;
+                }
+                .top-queue {
+                    top: -20px;
                 }
             }
         }
         .buttons {
+            margin-bottom: 20px;
             .button{
-
                 margin-inline: 20px;
             }
         }
