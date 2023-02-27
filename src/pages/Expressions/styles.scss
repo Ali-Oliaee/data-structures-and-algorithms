@@ -1,0 +1,16 @@
+.expression-page {
+    .images {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin-block: 30px;
+    }
+    p {
+        margin-block: 10px;
+    }
+    input {
+        max-width: 400px;
+        margin-bottom: 20px;
+    }
+}
